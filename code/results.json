@@ -1,0 +1,223 @@
+{
+ "V_x0": 21.784273447439414,
+ "opt_det_cost": 20.40000000000002,
+ "switches": [
+  [
+   0.9,
+   "S",
+   "E",
+   0.225,
+   0.101
+  ],
+  [
+   12.7,
+   "E",
+   "T",
+   0.762,
+   0.354
+  ]
+ ],
+ "cheap_switches": [
+  [
+   1.0,
+   "S",
+   "E",
+   0.232,
+   0.101
+  ],
+  [
+   10.9,
+   "E",
+   "T",
+   0.714,
+   0.319
+  ]
+ ],
+ "cheap_det_cost": 16.399999999999963,
+ "mc_base": {
+  "Analysis-first (Vee-like)": {
+   "mean": 34.7640500000002,
+   "p10": 26.80000000000011,
+   "p90": 46.210000000000356,
+   "shocks": 1.546
+  },
+  "Test-first (RID-DE-like)": {
+   "mean": 55.04645000000021,
+   "p10": 36.00000000000025,
+   "p90": 77.41999999999985,
+   "shocks": 5.302
+  },
+  "Fixed alternation (Spiral-like)": {
+   "mean": 33.3988500000002,
+   "p10": 31.100000000000172,
+   "p90": 40.400000000000276,
+   "shocks": 0.4535
+  },
+  "Naive slope rule": {
+   "mean": 57.655950000000175,
+   "p10": 38.300000000000246,
+   "p90": 81.91999999999958,
+   "shocks": 5.7065
+  },
+  "Gap-weighted derivative rule": {
+   "mean": 32.41100000000017,
+   "p10": 24.300000000000075,
+   "p90": 43.71000000000032,
+   "shocks": 1.559
+  },
+  "Coupling-aware derivative rule": {
+   "mean": 26.905700000000106,
+   "p10": 22.200000000000045,
+   "p90": 35.10000000000018,
+   "shocks": 0.9465
+  },
+  "Headroom procedure (Table 6)": {
+   "mean": 22.017200000000038,
+   "p10": 20.30000000000002,
+   "p90": 26.20000000000008,
+   "shocks": 0.3555
+  },
+  "Optimal (dynamic programming)": {
+   "mean": 21.707400000000042,
+   "p10": 20.40000000000002,
+   "p90": 25.800000000000082,
+   "shocks": 0.282
+  }
+ },
+ "scenarios": {
+  "Base": {
+   "Analysis-first (Vee-like)": 34.927800000000204,
+   "Test-first (RID-DE-like)": 55.22010000000022,
+   "Fixed alternation (Spiral-like)": 33.382000000000204,
+   "Naive slope rule": 57.764300000000176,
+   "Gap-weighted derivative rule": 32.43770000000017,
+   "Coupling-aware derivative rule": 26.813900000000103,
+   "Optimal (dynamic programming)": 21.703500000000044,
+   "share_T_map": 0.20380787537862396,
+   "Headroom procedure": 22.017200000000038
+  },
+  "Cheap, safe tests": {
+   "Analysis-first (Vee-like)": 23.05510000000006,
+   "Test-first (RID-DE-like)": 27.865300000000122,
+   "Fixed alternation (Spiral-like)": 24.703100000000084,
+   "Naive slope rule": 38.68550000000026,
+   "Gap-weighted derivative rule": 25.627600000000093,
+   "Coupling-aware derivative rule": 23.84640000000007,
+   "Optimal (dynamic programming)": 17.161199999999976,
+   "share_T_map": 0.23900187509014856,
+   "Headroom procedure": 17.167099999999976
+  },
+  "Costly, risky tests": {
+   "Analysis-first (Vee-like)": 58.41079999999995,
+   "Test-first (RID-DE-like)": 162.98719999999793,
+   "Fixed alternation (Spiral-like)": 36.33670000000023,
+   "Naive slope rule": 169.39029999999798,
+   "Gap-weighted derivative rule": 32.815700000000135,
+   "Coupling-aware derivative rule": 28.0195000000001,
+   "Optimal (dynamic programming)": 22.89400000000005,
+   "share_T_map": 0.17633059281696237,
+   "Headroom procedure": 23.51090000000005
+  },
+  "Weak simulation": {
+   "Analysis-first (Vee-like)": 55.559100000000235,
+   "Test-first (RID-DE-like)": 200.09999999999286,
+   "Fixed alternation (Spiral-like)": 39.354300000000286,
+   "Naive slope rule": 57.764300000000176,
+   "Gap-weighted derivative rule": 32.593200000000174,
+   "Coupling-aware derivative rule": 26.998300000000107,
+   "Optimal (dynamic programming)": 21.76190000000004,
+   "share_T_map": 0.20395211308235972,
+   "Headroom procedure": 22.03540000000004
+  }
+ },
+ "procedure": {
+  "Base": {
+   "mean": 22.017200000000038,
+   "p90": 26.20000000000008,
+   "shocks": 0.3555
+  },
+  "Cheap, safe tests": {
+   "mean": 17.167099999999976,
+   "p90": 19.81000000000002,
+   "shocks": 0.202
+  },
+  "Costly, risky tests": {
+   "mean": 23.51090000000005,
+   "p90": 29.100000000000087,
+   "shocks": 0.46
+  },
+  "Weak simulation": {
+   "mean": 22.03540000000004,
+   "p90": 26.400000000000077,
+   "shocks": 0.361
+  }
+ },
+ "dp_misspecified_pm30": {
+  "mean": 34.39156666666641,
+  "min": 21.825000000000035,
+  "max": 200.09999999999286,
+  "median": 22.89583333333339,
+  "n_stuck": 1,
+  "mean_excl_stuck": 25.67007017543869
+ },
+ "slope_rule_flip_fraction_under_recoding": 0.05830775975449364,
+ "fits": {
+  "4": {
+   "theta": {
+    "kb": 0.319,
+    "kl": 0.427,
+    "mb": 0.28,
+    "ml": 0.662,
+    "rS": 0.283,
+    "rE": 0.108,
+    "rT": 0.162
+   },
+   "policy_agreement": 0.7004182893408337,
+   "cost_using_fitted_dp": 22.602400000000046,
+   "budget_seen": 9.0
+  },
+  "6": {
+   "theta": {
+    "kb": 0.281,
+    "kl": 0.394,
+    "mb": 0.168,
+    "ml": 0.805,
+    "rS": 0.259,
+    "rE": 0.111,
+    "rT": 0.23
+   },
+   "policy_agreement": 0.6016154622818405,
+   "cost_using_fitted_dp": 22.32900000000005,
+   "budget_seen": 15.0
+  },
+  "8": {
+   "theta": {
+    "kb": 0.366,
+    "kl": 0.509,
+    "mb": 0.109,
+    "ml": 0.924,
+    "rS": 0.337,
+    "rE": 0.102,
+    "rT": 0.238
+   },
+   "policy_agreement": 0.925356988316746,
+   "cost_using_fitted_dp": 21.87040000000004,
+   "budget_seen": 21.0
+  }
+ },
+ "true_theta": {
+  "kb": 0.4,
+  "kl": 0.6,
+  "mb": 0.05,
+  "ml": 1.05,
+  "rS": 0.3,
+  "rE": 0.1,
+  "rT": 0.22
+ },
+ "n_assessments": 8,
+ "procedure_fitted": {
+  "4": 21.825300000000038,
+  "6": 21.947500000000044,
+  "8": 21.705600000000036
+ }
+}

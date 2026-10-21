@@ -1,0 +1,7 @@
+{
+  "name": "kmc-s1-guide",
+  "private": true,
+  "description": "Builds Supplementary Material S1 (application guide) as .docx",
+  "scripts": { "build": "node guide.js" },
+  "dependencies": { "docx": "^9.6.1" }
+}

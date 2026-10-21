@@ -1,0 +1,41 @@
+cff-version: 1.2.0
+message: "If you use this material, please cite the article and this archived version."
+title: "Knowledge-Maturity Coevolution (KMC): code and supplementary material"
+version: "1.0.0"
+date-released: 2026-10-21
+doi: 10.5281/zenodo.23199997
+license: MIT
+authors:
+  - family-names: "de Albuquerque"
+    given-names: "Pedro Kukulka"
+    affiliation: "Instituto Tecnológico de Aeronáutica (ITA)"
+  - family-names: "Pleffken"
+    given-names: "Daniel R."
+    affiliation: "Embry-Riddle Aeronautical University"
+  - family-names: "Cerqueira"
+    given-names: "Christopher S."
+    affiliation: "Instituto Tecnológico de Aeronáutica (ITA)"
+    orcid: "https://orcid.org/0000-0002-6560-2294"
+  - family-names: "Galembeck"
+    given-names: "Lucas"
+    affiliation: "Instituto Tecnológico de Aeronáutica (ITA)"
+keywords:
+  - systems engineering
+  - verification and validation
+  - technology maturity
+  - test planning
+  - dynamic programming
+preferred-citation:
+  type: article
+  title: "Knowledge-Maturity Coevolution: A Coupled Evidence Model for Selecting Simulation and Test Activities in Constrained Engineering Development"
+  authors:
+    - family-names: "de Albuquerque"
+      given-names: "Pedro Kukulka"
+    - family-names: "Pleffken"
+      given-names: "Daniel R."
+    - family-names: "Cerqueira"
+      given-names: "Christopher S."
+    - family-names: "Galembeck"
+      given-names: "Lucas"
+  journal: "IEEE Access"
+  year: 2026
