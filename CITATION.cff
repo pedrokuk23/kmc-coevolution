@@ -12,6 +12,7 @@ authors:
   - family-names: "Pleffken"
     given-names: "Daniel R."
     affiliation: "Embry-Riddle Aeronautical University"
+    orcid: "https://orcid.org/0000-0003-4986-0514"
   - family-names: "Cerqueira"
     given-names: "Christopher S."
     affiliation: "Instituto Tecnológico de Aeronáutica (ITA)"
@@ -19,6 +20,7 @@ authors:
   - family-names: "Galembeck"
     given-names: "Lucas"
     affiliation: "Instituto Tecnológico de Aeronáutica (ITA)"
+    orcid: "https://orcid.org/0009-0002-1000-1069"
 keywords:
   - systems engineering
   - verification and validation
