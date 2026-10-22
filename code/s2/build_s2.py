@@ -59,7 +59,8 @@ BODY = [
       "vehicle, and their maturity is not aggregated."),
 ("P", "The bounded corpus comprises eight public documents dated 2000–2025: the preflight program paper [54], the mishap "
       "investigation [14], the return-to-flight review [55], two NASA releases on the second flight [56], [57], the flight-2 "
-      "guidance and control paper [58], the 2004 research engineering report [59], and the NASA historical page [60]. From them, "
+      "guidance and control paper [58], the 2004 Research Engineering Annual Report, published in June 2006 [59], and the NASA "
+      "historical page [60]. From them, "
       "19 parent records yield 20 observations, one of which (a conflicting release altitude) is retained only for discrepancy "
       "auditing. A 2004 incident release [61] and a lessons-learned review [62] were added later as a separately logged extension "
       "and did not change the original records."),
@@ -93,8 +94,8 @@ BODY = [
       "for a higher-altitude release that reduced exposure [55], [56]. A test-setup anomaly on 11 February 2004 exceeded the "
       "qualified actuator torque and led to replacement and investigation before the second flight [61]. On 27 March 2004 the HXLV "
       "delivered the research vehicle at 28.67 km (94,069 ft) against 28.63 km (93,932 ft) planned and at Mach 6.946 against "
-      "7.075 [57], [58]; the 2004 report states that both the Mach 7 and the Mach 10 flights delivered the research vehicle "
-      "within the separation tolerances [59]. A lessons-learned "
+      "7.075 [57], [58]; the 2004 Research Engineering Annual Report, published in June 2006, states that both the Mach 7 and "
+      "the Mach 10 flights delivered the research vehicle within the specified separation tolerances [59]. A lessons-learned "
       "review relates the accident to heritage assumptions, representative testing, stability margins, and uncertainty and dynamic "
       "modeling [62]. Fig. S2-2 separates the event dates from the dates of the documents that report them."),
 ("FIG", ("S2_Fig1.png", "Fig. S2-1. Reported X-43A roll-axis gain margin before and after nominal model correction [14, pp. 6–7]. "
@@ -232,15 +233,15 @@ BODY = [
       "learning between flights without a documented terminal success."),
 
 ("H1", "7. Cross-case reading"),
-("P", "Table S2-5 (Table 9 of the article) summarizes the six cases; its third column is an interpretation through the model, "
-      "not a measured state. In the five flight programs, failures followed integrated tests that exposed configuration-specific "
+("P", "Table S2-5 (Table 9 of the article) summarizes the six cases; its last two columns are interpretations through the model, "
+      "not measured states. In the five flight programs, failures followed integrated tests that exposed configuration-specific "
       "or integrated-level gaps (X-43A flight 1, Apollo 6, Falcon 1 flights 1–3, X-51A flights 2–3, both HTV-2 flights). In four "
       "of them (X-43A, Saturn V, Falcon 1, X-51A) a successful flight followed diagnosis, separate-effects testing, or analysis; "
       "the HTV-2 shows that learning after failures does not guarantee a final demonstration. In the F-1 program, the absence of "
       "predictive capability led directly to controlled-perturbation tests on full-scale hardware. The cases "
       "span the scenarios of Section V-C: costly, high-consequence integrated tests (X-43A, Saturn V), weak simulation (F-1, HTV-2, "
       "X-51A), and affordable flights (Falcon 1)."),
-("TABLE", ("Table S2-5. Documented sequences read through the model (Table 9 of the article). The third column is an interpretation, not a measured KMC state.",
+("TABLE", ("Table S2-5. Documented sequences read through the model (Table 9 of the article). The KMC reading and the assignment to a model regime are interpretations, not measured states.",
            ["Program", "Documented sequence", "Interpretive KMC reading", "Model regime"],
            [["X-43A (2001–2004)", "Flight 1 lost; models, wind-tunnel and actuator tests revised; flights 2–3 successful [14], [55]–[59]", "Flight on heritage models → failure; tests and revised models before the next flight (restored headroom)", "Costly, risky tests"],
             ["Saturn V (1963–1968)", "All-up decision; Apollo 4 success; Apollo 6 pogo and J-2 failures; fixes; crewed Apollo 8 [17], [63]", "Few integrated tests; integrated-level failure; diagnosis and verified fixes before the next flight", "Costly, high-consequence tests"],
@@ -309,19 +310,21 @@ def build(out):
     width = sec.page_width - sec.left_margin - sec.right_margin
     for kind, c in BODY:
         if kind == "H1":
-            para(doc, c, 12, bold=True, color=BLUE, align=WD_ALIGN_PARAGRAPH.LEFT, before=8, after=4)
+            para(doc, c, 12, bold=True, color=BLUE, align=WD_ALIGN_PARAGRAPH.LEFT, before=8, after=4).paragraph_format.keep_with_next = True
         elif kind == "H2":
-            para(doc, c, 10.5, bold=True, color=INK, align=WD_ALIGN_PARAGRAPH.LEFT, before=4, after=3)
+            para(doc, c, 10.5, bold=True, color=INK, align=WD_ALIGN_PARAGRAPH.LEFT, before=4, after=3).paragraph_format.keep_with_next = True
         elif kind == "P":
             para(doc, c)
         elif kind == "FIG":
             fn, cap = c
             p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            p.paragraph_format.keep_with_next = True; p.paragraph_format.keep_together = True
             p.add_run().add_picture(fn, width=Inches(5.6))
             para(doc, cap, 8.5, align=WD_ALIGN_PARAGRAPH.JUSTIFY, after=10)
         elif kind == "TABLE":
             cap, head, rows, widths = c
-            para(doc, cap, 8.5, bold=True, align=WD_ALIGN_PARAGRAPH.LEFT, before=4, after=3)
+            cp_ = para(doc, cap, 8.5, bold=True, align=WD_ALIGN_PARAGRAPH.LEFT, before=4, after=3)
+            cp_.paragraph_format.keep_with_next = True
             t = doc.add_table(rows=1, cols=len(head)); t.style = "Table Grid"; t.alignment = WD_TABLE_ALIGNMENT.CENTER
             tot = sum(widths)
             for j, h in enumerate(head):
@@ -331,7 +334,13 @@ def build(out):
                 cells = t.add_row().cells
                 for j, v in enumerate(r):
                     cells[j].text = ""; run(cells[j].paragraphs[0], v, 8)
-            for row in t.rows:
+            for ri, row in enumerate(t.rows):
+                trPr = row._tr.get_or_add_trPr(); cs = OxmlElement("w:cantSplit"); trPr.append(cs)
+                if ri == 0:
+                    th = OxmlElement("w:tblHeader"); trPr.append(th)
+                for cell in row.cells:
+                    for pp in cell.paragraphs:
+                        pp.paragraph_format.keep_with_next = ri < len(t.rows) - 1 and len(t.rows) <= 6
                 for j, cell in enumerate(row.cells):
                     cell.width = int(width * widths[j] / tot)
             para(doc, "", 4, after=4)
