@@ -228,10 +228,12 @@ def policy_procedure(K, M, hist, p=P, tgt=TARGET, haz_max=0.05, wait_haz=False):
         # hazard exceeds the exposure limit (step 3b by reducing exposure through knowledge: K >= K_test).
         # Default (paper results): step 3b is resolved by re-approving the limit, i.e. the test proceeds.
         # most productive knowledge-building activity, net of expected shock loss (T included when tests teach)
+        # with wait_haz=True (hard limit) only activities whose hazard is within the limit are admissible (step 0)
+        cand = [a for a in ["S", "E", "T"] if not wait_haz or float(rates(K, M, a, p)[2]) <= haz_max]
         def net(a):
             fk, fm, h = rates(K, M, a, p)
             return float(fk) - float(h) * p["dK"]
-        return max(["S", "E", "T"], key=net)
+        return max(cand, key=net)
     return "T"
 
 

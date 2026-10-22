@@ -60,7 +60,7 @@ runs every script in order (about 2 h on 2 cores; `extensions.py` and `calib_ada
 | `ktest_variant.py` | Hard exposure limit: the procedure waits for K ≥ K_test, Eq. (17b) (Secs. V-C, V-D) | `ktest_variant.json` |
 | `extensions.py` | Hard limit in the scenarios and forms, tuned two-phase threshold baseline, ablations of the couplings, launch-data variants (Secs. V-C, V-H, VI-B) | `extensions.json` |
 | `calib_replicates.py` | Estimation from noisy assessments, 40 replications: plans fitted once (Sec. V-F) | `calib_replicates.json` |
-| `calib_adaptive.py` | Estimation with re-fitting and re-planning after every assessment, with a weak prior (Sec. V-F) | `calib_adaptive.json` |
+| `calib_adaptive.py` | Estimation with re-fitting and re-planning after every assessment, with a weak prior; the policy sees the true state (`true`) or only the noisy assessments (`est`) (Sec. V-F) | `calib_adaptive.json`, `calib_adaptive_est.json` |
 | `fig1.py` … `fig8.py` | Figures 1–8 | `../figures/Fig1.pdf` … `Fig8.pdf` (and `.png`) |
 
 Monte Carlo runs use fixed seeds, so the numbers are reproducible on the same platform; other NumPy versions can change the last digit of Monte Carlo means.

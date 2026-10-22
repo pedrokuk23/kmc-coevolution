@@ -13,5 +13,6 @@ python3 launch_variant.py               # launch_variant.json (Table 8, last fiv
 python3 ktest_variant.py                # ktest_variant.json (hard exposure limit, Secs. V-C, V-D)
 python3 extensions.py                   # extensions.json (hard limit, tuned threshold, ablations; Secs. V-C, V-H, VI-B)
 python3 calib_replicates.py 40          # calib_replicates.json (one-time fits, Sec. V-F)
-python3 calib_adaptive.py 40            # calib_adaptive.json (re-estimation with prior, Sec. V-F)
+python3 calib_adaptive.py 40 true       # calib_adaptive.json (re-estimation with prior, true state, Sec. V-F)
+python3 calib_adaptive.py 40 est        # calib_adaptive_est.json (state known only through assessments, Sec. V-F)
 for i in 1 2 3 4 5 6 7 8; do python3 fig$i.py > /dev/null; done   # ../figures/Fig1-Fig8 (.pdf, .png)

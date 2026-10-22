@@ -134,7 +134,7 @@ const body = [
     ["Ground tests (T), K = 0.50, M̄ = 0.574", "c = 0…3; M = .10, .20, .28, .34", "−0.236", "r_{T} = 0.24"],
   ], [2800, 3400, 1200, 1626]),
   H2("3.4 Ceilings: regress the plateaus"),
-  P("A plateau is the level at which an activity's marginal rate has fallen below about 10% of its initial value (Table 6, step 5). Regress the simulation plateaus on the demonstrated M of each campaign, and the integrated-test plateaus on the K at which they were run:"),
+  P("A plateau is the level at which an activity's marginal rate has fallen below about 10% of its initial value (Table 6, step 2). Regress the simulation plateaus on the demonstrated M of each campaign, and the integrated-test plateaus on the K at which they were run:"),
   EQ("K̄(M) = k_{b} + k_{l} M,        M̄(K) = m_{b} + m_{l} K"),
   P("Org X: simulation plateaus K = 0.47, 0.57, 0.71, 0.82 at M = 0.10, 0.30, 0.50, 0.70 give **K̄ = 0.40 + 0.60 M**; test plateaus M = 0.36, 0.53, 0.67, 0.84 at K = 0.30, 0.45, 0.60, 0.75 give **M̄ = 0.05 + 1.05 K**."),
   ...IMG("../tutorial/t_fits.png", 600, 150, "Figure S2. Fits of the rates and ceilings for Org X."),
