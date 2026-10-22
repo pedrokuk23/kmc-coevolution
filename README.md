@@ -15,8 +15,9 @@ Equation, table, figure and section numbers below refer to the article.
 | `code/` | Model, experiments and figure scripts (Python), with the result files they produce (`.json`) |
 | `code/tutorial/` | Scripts that reproduce every number and figure of Supplementary Material S1 |
 | `code/guide/` | Sources of the S1 guide (`guide.js`) and of the worksheet (`ws.py`) |
+| `code/s2/` | Source of Supplementary Material S2 (`build_s2.py`) and of its figures (`figs_s2.py`) |
 | `figures/` | Figures 1–8 of the article (vector PDF and 300-dpi PNG) |
-| `supplementary/` | Supplementary Material S1: application guide (`.pdf`, `.docx`) and calibration and decision worksheet (`.xlsx`) |
+| `supplementary/` | Supplementary Material S1: application guide (`.pdf`, `.docx`) and calibration and decision worksheet (`.xlsx`); Supplementary Material S2: documented programs (`.pdf`, `.docx`) |
 
 ## Data
 
@@ -25,7 +26,7 @@ The base model inputs are synthetic (Table 5). Section VI uses public data, ente
 - NIST/SEMATECH e-Handbook of Statistical Methods, reliability-growth datasets (`relgrowth.py`);
 - FAA (2005), Guide to Probability of Failure Analysis for New Expendable Launch Vehicles, and Cross and Vesely (2018), early-flight failure data (`launch_calib.py`).
 
-All organizations, projects and records in S1 (Org X, Rocket R, Project N) are fictional.
+All organizations, projects and records in S1 (Org X, Rocket R, Project N) are fictional. S2 uses only public documents on real programs.
 
 ## Requirements
 
@@ -78,6 +79,15 @@ python3 figs.py      # Figures S1-S4
 ```
 
 Then, in `code/guide/`, `node guide.js` rebuilds the guide (`.docx`) and `python3 ws.py` rebuilds the worksheet.
+
+### Supplementary Material S2
+
+S2 expands Section VI-C: the readings of the six documented programs, the X-43A corpus and coverage audit, and the retrospective tables. All sources are public and cited by the article's reference numbers. From `code/s2/`:
+
+```
+python3 figs_s2.py      # Figures S2-1 and S2-2
+python3 build_s2.py     # KMC_Supplementary_S2_Documented_Programs.docx (convert to PDF with LibreOffice)
+```
 
 ## License
 
