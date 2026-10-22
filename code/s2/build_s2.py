@@ -63,20 +63,26 @@ BODY = [
       "19 parent records yield 20 observations, one of which (a conflicting release altitude) is retained only for discrepancy "
       "auditing. A 2004 incident release [61] and a lessons-learned review [62] were added later as a separately logged extension "
       "and did not change the original records."),
+("P", "Each document entered the epochs by its publication date: [54] in E1, [14] in E2, [55] and [56] in E3, and [57]–[59] in "
+      "E4. The NASA historical page [60], updated in 2025, belongs to no epoch: it is used only to record a conflicting release "
+      "altitude and never enters an assessment, so no information published after June 2006 enters any epoch."),
 ("P", "Records were grouped in four cumulative documentary epochs: E1, preflight planning (October 2000); E2, investigation "
       "(through May 2003); E3, corrective actions (through March 2004); and E4, retrospective results (through June 2006). The "
-      "epochs contain 3, 7, 14, and 19 observations. Publication dates delimit the epochs; they do not establish what individual "
+      "epochs contain 3, 7, 14, and 19 observations; these cumulative counts organize the documents and are not independent "
+      "samples. Publication dates delimit the epochs; they do not establish what individual "
       "engineers knew, and later reconstructions were excluded from earlier epochs. Repeated accounts of the same event were linked "
       "rather than counted as independent demonstrations. Conflicting values were preserved rather than averaged: the first-flight "
       "release altitude appears as about 20,000 ft [55], 24,000 ft [56], and 23,000 ft [60], and the 22,244 ft reported at "
       "failure time 13.5 s [14] is not a release altitude."),
-("H2", "2.2 Coverage audit"),
-("P", "The audit enumerates 120 units: three claims × ten rubric criteria × four epochs. For each unit it recorded the candidate "
-      "passages, the configuration to which they apply, the missing information, and whether the evidence was sufficient for a "
-      "complete anchored assessment. None was: every unit remained not assessed. Typical gaps were final model versions and "
+("H2", "2.2 Summary of the documentary audit"),
+("P", "The audit enumerates 120 criterion-level units, three claims × ten rubric criteria × four epochs, that is, twelve "
+      "claim–epoch profiles of ten criteria each. For each unit it recorded the candidate passages, the configuration to which they "
+      "apply, the missing information, and whether the evidence was sufficient to place the criterion on an anchor of Table 4. "
+      "None was, so every unit remained not assessed and no profile, and hence no K or M, could be formed. Typical gaps were final model versions and "
       "complete parameter distributions (C1, C2), closure of reviews and acceptance records, repeatability, and activity-level costs "
       "(C3), and export-controlled material omitted from the public investigation [14]. The result supports the restriction of the "
-      "article to qualitative readings; it does not show that the program lacked the evidence."),
+      "article to qualitative readings; it does not show that the program lacked the evidence. This section summarizes the audit; "
+      "the unit-level working records are not reproduced in this supplement."),
 ("H2", "2.3 Sequence"),
 ("P", "The preflight paper reported control-law refinement and Monte Carlo analysis of aerodynamic and flight-control "
       "uncertainties, and a trajectory different from that of the heritage booster [54]. After the loss of control during boost on "
@@ -87,7 +93,8 @@ BODY = [
       "for a higher-altitude release that reduced exposure [55], [56]. A test-setup anomaly on 11 February 2004 exceeded the "
       "qualified actuator torque and led to replacement and investigation before the second flight [61]. On 27 March 2004 the HXLV "
       "delivered the research vehicle at 28.67 km (94,069 ft) against 28.63 km (93,932 ft) planned and at Mach 6.946 against "
-      "7.075 [57], [58], and the Mach 10 flight later in 2004 also achieved separation within tolerances [59]. A lessons-learned "
+      "7.075 [57], [58]; the 2004 report states that both the Mach 7 and the Mach 10 flights delivered the research vehicle "
+      "within the separation tolerances [59]. A lessons-learned "
       "review relates the accident to heritage assumptions, representative testing, stability margins, and uncertainty and dynamic "
       "modeling [62]. Fig. S2-2 separates the event dates from the dates of the documents that report them."),
 ("FIG", ("S2_Fig1.png", "Fig. S2-1. Reported X-43A roll-axis gain margin before and after nominal model correction [14, pp. 6–7]. "
@@ -97,8 +104,11 @@ BODY = [
          "incident [61], and the return-to-flight mission [57]. Connecting segments associate an event with a record; their "
          "lengths do not measure decision delay.")),
 ("H2", "2.4 Reading through the model"),
-("P", "In the terms of the article, an integrated test was attempted while knowledge of the configuration-specific claims rested "
-      "on heritage transfer, and the result was an epistemic shock on C1–C3. Recovery came from the activities the model favors "
+("P", "The margins of Fig. S2-1 are engineering quantities: 8 dB, 6 dB, and 2 dB correspond to gain factors of about 2.5, 2.0, "
+      "and 1.26, and the corrected value is only an upper bound. They are not values of K or M, and the record gives no calibrated "
+      "mapping between them; terms such as headroom or K_need below are readings through the framework, not reconstructed states. "
+      "With that caveat, an integrated test was attempted while knowledge of the configuration-specific claims rested "
+      "on heritage transfer, and the result can be read as an epistemic shock on C1–C3. Recovery came from the activities the model favors "
       "after a shock: separate-effects testing, revised models, and joint-uncertainty simulation, together with reduced exposure. "
       "Table S2-1 links the main observations to rubric criteria. Table S2-2 lists the postflight findings examined in the "
       "extension, and Table S2-3 a time-bounded check that uses only documents available before each flight, with cutoffs at the "
@@ -115,7 +125,7 @@ BODY = [
              "Declare the new baseline; verify changed interfaces and envelope", "No automatic recovery from completing a corrective action"],
             ["Actuator torque exceedance before flight 2 [61]", "C3 demonstrated performance",
              "Keep acceptance open until the replacement is verified", "Program detected it without KMC"],
-            ["Flight-2 delivery within tolerance [57], [58]", "C3 demonstrated performance",
+            ["Flight-2 delivery close to target (94,069 vs 93,932 ft; Mach 6.946 vs 7.075) and reported within separation tolerances [58], [59]", "C3 demonstrated performance",
              "Credit the delivery point, not full-envelope repeatability", "No transfer of HXRV results or of the Mach 10 flight as a Mach 7 repetition"]],
            [1.6, 1.5, 1.7, 1.7])),
 ("TABLE", ("Table S2-2. Postflight findings and KMC reasoning (extension PF01–PF05).",
@@ -153,9 +163,10 @@ BODY = [
       "coherence (C1) and uncertainty adequacy (C2) remain open, and the retained sequence couples targeted tests with "
       "joint-uncertainty simulation rather than closing on nominal stability. Chain B uses only the release of 17 February 2004 "
       "[61], before flight 2: exceeding the qualified torque removes the basis for accepting that actuator, so the retained "
-      "sequence replaces and verifies it. One criterion can be coded from the record: for flight-1 boost control (C3), "
-      "demonstrated performance is at level 0, because the essential performance criteria failed. The other nine criteria, and a "
-      "comparable preflight profile, are not assessed, so no (K, M) point or slope dM/dK can be computed; the criterion-based "
+      "sequence replaces and verifies it. For flight-1 boost control (C3), the record shows that the mandatory "
+      "demonstrated-performance condition was not met, because control was lost. This is a failed demonstration, not the absence "
+      "of one, and no anchor of Table 4 is assigned; consistently with the audit of 2.2, the criteria remain not assessed, so no "
+      "(K, M) point or slope dM/dK can be computed; the criterion-based "
       "branch of the procedure remains usable where the derivative-based branch is not. In both chains the program reached the "
       "same actions without KMC; the alternatives are analytical comparisons, not a recovered historical trade study, and their "
       "costs and durations are unknown."),
@@ -176,28 +187,31 @@ BODY = [
       "Apollo 4 on 9 November 1967, succeeded [17]. Apollo 6, on 4 April 1968, experienced pogo oscillations, the early shutdown of "
       "two second-stage engines, and a failed third-stage restart [17]. Engineers detuned the F-1 engines, charged the "
       "liquid-oxygen prevalve cavities with helium, and redesigned the J-2 augmented spark igniter lines, and on 27 April 1968 the "
-      "third Saturn V was approved for a crew [17]. In the terms of the article, all-up testing concentrated maturity evidence in "
-      "few expensive integrated tests; Apollo 6 produced shocks from couplings visible only at integrated level, and the program "
-      "restored headroom through diagnosis and ground-verified fixes before the next integrated test, as steps 4 and 5 of Table 6 "
-      "would direct."),
+      "third Saturn V was approved for a crew [17]. Read through the model, all-up testing concentrated maturity evidence in few "
+      "expensive integrated tests, Apollo 6 exposed couplings visible only at integrated level, and diagnosis and ground-verified "
+      "fixes before the next integrated test correspond to what steps 4 and 5 of Table 6 would direct; the record does not give "
+      "the knowledge state that the model would assign."),
 
 ("H1", "4. F-1 combustion instability"),
 ("P", "Between October 1962 and September 1966, Project First, the F-1 combustion-stability program, conducted about 2000 of "
       "the roughly 3200 full-scale F-1 tests, combining fourteen injection patterns with fifteen baffle configurations and rating "
       "stability with bombs producing perturbations of about 100% of chamber pressure; full-scale test data were described as the "
-      "most reliable source of design information [15]. The flight injector accumulated 703 engine tests [15]. This is the "
-      "weak-simulation regime of Section V-C: with a low data-limited ceiling K̄, the model prescribes discriminating physical tests "
-      "rather than more analysis, and the bomb test is a separate-effects stimulus that makes stability observable. The cost of the "
-      "regime, thousands of full-scale tests, illustrates why weak simulation penalizes analysis-first and test-first logics in the "
-      "model."),
+      "most reliable source of design information [15]. The flight injector accumulated 703 engine tests [15]. The bomb test is a "
+      "controlled-perturbation test on full-scale combustion hardware: a local perturbation whose amplitude was about that of the "
+      "mean chamber pressure, after which the oscillation either decays or persists, so stability becomes observable. It is not a "
+      "separate-effects test in the usual sense, because the coupled combustion phenomena are all present; whether it counts as E "
+      "or T in the model depends on the claim assessed (stability margin of an injector design, or the qualified engine). Read "
+      "through the model, the program sits in the weak-simulation regime of Section V-C, where discriminating physical tests "
+      "replace analysis as the source of knowledge. The large number of tests documents a high experimental effort; without "
+      "comparable alternatives and costs, it does not show that another sequence would have been cheaper."),
 
 ("H1", "5. Falcon 1"),
 ("P", "Falcon 1 failed on its first three flights, in March 2006 (fuel leak and fire), March 2007 (second-stage control lost to "
       "propellant slosh), and August 2008 (first stage recontacted the second stage after separation), and reached orbit on "
       "28 September 2008 [16], [64]. Each failure revealed a different mode and was followed by diagnosis and correction. Flights "
-      "cost about 8 million US dollars against roughly 100 million for development [16]. In the terms of the article this is "
-      "test-first development with integrated tests that were affordable relative to the program: shocks are frequent when "
-      "knowledge is low, and the program reached the target after three of them. The record does not show how much each flight "
+      "cost about 8 million US dollars against roughly 100 million for development [16]. Read through the model, this is "
+      "test-first development with integrated tests that were affordable relative to the program, and the program reached orbit "
+      "after three failures. The record does not show how much each flight "
       "taught, and whether ground tests could have exposed these modes at lower cost is not established; Section VI-B of the "
       "article discusses why the launch-vehicle estimates support strong learning in flight only conditionally."),
 
@@ -205,39 +219,44 @@ BODY = [
 ("P", "The X-51A scramjet demonstrator flew four times. In May 2010 it flew for more than three minutes at Mach 4.88 under "
       "scramjet power [65]; in June 2011 the inlet unstarted during the transition to JP-7 fuel and restart attempts failed [66]; "
       "in August 2012 a cruiser control-fin fault caused the loss of the vehicle before scramjet ignition [65]; and on 1 May 2013 "
-      "it flew for more than six minutes, three and a half under scramjet power, at Mach 5.1 [67]. The DARPA HTV-2 glider was lost "
+      "it flew for more than six minutes, three and a half under scramjet power, and reached Mach 5.1 [67]. The DARPA HTV-2 glider was lost "
       "on both of its flights. After the April 2010 flight, the engineering review board found higher-than-predicted adverse yaw "
       "coupled into roll that exceeded the available roll control [68]. That aerodynamic knowledge was incorporated into the August "
       "2011 flight, which achieved controlled Mach 20 flight before unexpected aeroshell degradation caused upsets of increasing "
       "severity [68], [69]. The program manager stated that extrapolating from known flight regimes and relying solely on advanced "
       "thermal modeling and ground testing could not predict the Mach 20 environment [69]."),
-("P", "In the terms of the article, this is the data-limited ceiling K̄ stated by the programs themselves: analysis and ground "
-      "testing could not raise configuration-specific knowledge to K_need, so each flight was both a demonstration and the main "
-      "source of new knowledge, and each loss was an epistemic shock that exposed a different claim (propulsion, control surfaces, "
-      "aerodynamic coupling, thermal protection)."),
+("P", "Read through the model, the HTV-2 statement corresponds to a low data-limited ceiling K̄: analysis and ground testing "
+      "could not provide the configuration-specific predictions the flights needed, so each flight was both a demonstration and "
+      "the main source of new information, and each failure exposed a different subsystem (propulsion, control surfaces, "
+      "aerodynamic coupling, thermal protection). The X-51A reached a successful flight after two failures; the HTV-2 shows "
+      "learning between flights without a documented terminal success."),
 
 ("H1", "7. Cross-case reading"),
-("P", "Table S2-5 (Table 9 of the article) summarizes the six cases. In the five flight programs, integrated tests that exposed "
-      "configuration-specific or integrated-level knowledge gaps produced shocks (X-43A flight 1, Apollo 6, Falcon 1 flights 1–3, "
-      "X-51A flights 2–3, both HTV-2 flights), and success followed separate-effects testing, diagnosis, or analysis that restored "
-      "headroom; in the F-1 program, the absence of predictive capability led directly to discriminating physical tests. The cases "
+("P", "Table S2-5 (Table 9 of the article) summarizes the six cases; its third column is an interpretation through the model, "
+      "not a measured state. In the five flight programs, failures followed integrated tests that exposed configuration-specific "
+      "or integrated-level gaps (X-43A flight 1, Apollo 6, Falcon 1 flights 1–3, X-51A flights 2–3, both HTV-2 flights). In four "
+      "of them (X-43A, Saturn V, Falcon 1, X-51A) a successful flight followed diagnosis, separate-effects testing, or analysis; "
+      "the HTV-2 shows that learning after failures does not guarantee a final demonstration. In the F-1 program, the absence of "
+      "predictive capability led directly to controlled-perturbation tests on full-scale hardware. The cases "
       "span the scenarios of Section V-C: costly, high-consequence integrated tests (X-43A, Saturn V), weak simulation (F-1, HTV-2, "
       "X-51A), and affordable flights (Falcon 1)."),
-("TABLE", ("Table S2-5. Documented sequences read through the model (Table 9 of the article).",
-           ["Program", "Documented sequence", "KMC reading", "Model regime"],
-           [["X-43A (2001–2004)", "Flight 1 lost; models, wind-tunnel and actuator tests revised; flights 2–3 successful [14], [55]–[59]", "T without headroom → shock; E and S restore headroom → T succeeds", "Costly, risky tests"],
-            ["Saturn V (1963–1968)", "All-up decision; Apollo 4 success; Apollo 6 pogo and J-2 failures; fixes; crewed Apollo 8 [17], [63]", "Few integrated tests; integrated-level shock; diagnosis before next T", "Costly, high-consequence tests"],
-            ["F-1 engine (1962–1966)", "About 2000 full-scale tests with bomb rating; 703 tests of flight injector [15]", "Low data-limited ceiling; discriminating physical tests replace analysis", "Weak simulation"],
-            ["Falcon 1 (2006–2008)", "Three failures with distinct modes; success on flight 4 [16], [64]", "Test-first at low K; each shock adds knowledge", "Cheap tests relative to program"],
-            ["X-51A (2010–2013)", "Partial success; inlet unstart; fin fault; success on flight 4 [65]–[67]", "Each flight both demonstration and main knowledge source; shocks on different claims", "Costly tests, low data-limited ceiling"],
-            ["HTV-2 (2010–2011)", "Two losses: yaw–roll coupling, then aeroshell degradation [68], [69]", "Ground testing and modeling could not reach K_need; flight-only learning", "Costly, high-consequence tests; weak simulation"]],
-           [1.2, 2.2, 2.0, 1.4])),
+("TABLE", ("Table S2-5. Documented sequences read through the model (Table 9 of the article). The third column is an interpretation, not a measured KMC state.",
+           ["Program", "Documented sequence", "Interpretive KMC reading", "Model regime"],
+           [["X-43A (2001–2004)", "Flight 1 lost; models, wind-tunnel and actuator tests revised; flights 2–3 successful [14], [55]–[59]", "Flight on heritage models → failure; tests and revised models before the next flight (restored headroom)", "Costly, risky tests"],
+            ["Saturn V (1963–1968)", "All-up decision; Apollo 4 success; Apollo 6 pogo and J-2 failures; fixes; crewed Apollo 8 [17], [63]", "Few integrated tests; integrated-level failure; diagnosis and verified fixes before the next flight", "Costly, high-consequence tests"],
+            ["F-1 engine (1962–1966)", "About 2000 full-scale tests with bomb rating; 703 tests of flight injector [15]", "Analysis could not predict stability; controlled-perturbation tests on full-scale hardware (low data-limited ceiling)", "Weak simulation"],
+            ["Falcon 1 (2006–2008)", "Three failures with distinct modes; success on flight 4 [16], [64]", "Affordable flights at low maturity; a different failure mode each time (test-first learning)", "Cheap tests relative to program"],
+            ["X-51A (2010–2013)", "Partial success; inlet unstart; fin fault; success on flight 4 [65]–[67]", "Flights were demonstrations and the main source of new information; failures on different subsystems", "Costly tests, low data-limited ceiling"],
+            ["HTV-2 (2010–2011)", "Two losses: yaw–roll coupling, then aeroshell degradation [68], [69]", "Program stated that ground tests and modeling could not predict the flight environment (low data-limited ceiling); learning without a terminal success", "Costly, high-consequence tests; weak simulation"]],
+           [1.2, 2.1, 2.2, 1.3])),
 
 ("H1", "8. Limitations"),
 ("P", "The cases were selected purposively and read with the outcomes known; the coding was not blinded or preregistered. Public documents omit export-controlled material, contemporary decision records, and activity-level "
       "costs, so no numerical K or M, no cost of alternatives, and no earlier detection or avoided loss can be established. The "
       "readings show that the mechanisms of the model are visible in documented decisions; they do not calibrate the model, test "
-      "its coefficients, or show that KMC would have produced better decisions than the reviews the programs carried out."),
+      "its coefficients, or show that KMC would have produced better decisions than the reviews the programs carried out. "
+      "Model terms used in the readings (headroom, data-limited ceiling, K_need) are interpretations; the observable content of "
+      "each case is the documented sequence of tests, failures, and corrections."),
 ]
 
 # ---------------------------------------------------------------- rendering (python-docx)
