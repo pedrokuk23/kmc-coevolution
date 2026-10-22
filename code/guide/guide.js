@@ -74,7 +74,7 @@ const body = [
     ["1", "Score K and M at every review; keep the log", "Sec. III-H, IV-A; Tables 4, 11-1", "Sec. 1–2"],
     ["2", "Calibrate the coefficients from records + public priors", "Table 11, steps 2–4", "Sec. 3"],
     ["3", "Compute the test threshold K_{test} = max(K_{need}, K_{haz})", "Eq. (17b), Table 6 steps 3/3b", "Sec. 4.2"],
-    ["4", "At each review, choose the next activity", "Table 6, steps 3–6; Fig. 8", "Sec. 4.3–4.5"],
+    ["4", "At each review, choose the next activity", "Table 6, steps 0 and 3–5; Fig. 8", "Sec. 4.3–4.5"],
     ["5", "After the project, update the coefficients", "Table 11, steps 5–6", "Sec. 5"],
   ], [600, 3700, 2700, 2026]),
 
@@ -160,11 +160,11 @@ const body = [
   TBL(["K at the integrated test", "Chance of losing a 2-BU test"], [
     ["0.20 (today)", "85%"], ["0.50", "53%"], ["0.714 (K_{need})", "22%"], ["0.817 (K_{haz})", "10%"],
   ], [4513, 4513]),
-  H2("4.3 The decision at each review (Table 6, steps 3–4)"),
+  H2("4.3 The decision at each review (Table 6, steps 0 and 3–4)"),
+  N("First screen every candidate activity against cost, schedule and exposure (step 0); the steps below choose only among the admissible ones."),
   N("If M < M_{req} and K ≥ K_{test}: run the **integrated test** T (step 3)."),
   N("Otherwise (K < K_{req}, K < K_{need}, or the hazard is above the limit, step 3b): run the activity with the largest **net knowledge rate** (step 4):"),
   EQ("net_{a} = F_{a}(K, M) − λ_{a}(1 − K)^{2} δ_{K},    with F_{S} = r_{S}[K̄(M) − K]_{+},  F_{E} = r_{E}(1 − K),  F_{T} = e_{T}(1 − K)"),
-  N("Screen the chosen activity against cost, schedule and exposure (step 6); if it fails, take the next best."),
   BOX("Worked example: first decision at (0.20, 0.10)", [
     "K̄(0.10) = 0.40 + 0.60 × 0.10 = 0.46;   K = 0.20 < K_{test} → step 4.",
     "S: 0.30 × (0.46 − 0.20) = 0.0780;   hazard 0 → net **0.0780**.",

@@ -41,6 +41,8 @@ def hazard(K, lam, p=P):
 
 def K_haz(p=P, haz_max=0.05):
     """Smallest K whose integrated-test hazard lambda_T (1-K)^2 is within the exposure limit (quadratic form)."""
+    if p["lamT"] <= 0:
+        return 0.0
     return float(np.clip(1 - np.sqrt(haz_max / p["lamT"]), 0, 1))
 
 
@@ -50,8 +52,14 @@ def K_test(p=P, tgt=TARGET, haz_max=0.05):
 
 
 def K_need(p=P, tgt=TARGET):
-    """Smallest K whose knowledge-limited ceiling clears the target maturity."""
-    return float(np.clip((max(tgt[1] - p["mb"], 0) / p["ml"]) ** (1.0 / p.get("mpow", 1.0)), 0, 1))
+    """Smallest K whose knowledge-limited ceiling clears the target maturity, Eq. (16b).
+    Returns inf when the target is infeasible under these parameters (Mbar(1) = mb + ml < M_req)."""
+    gap = tgt[1] - p["mb"]
+    if gap <= 0:
+        return 0.0
+    if p["ml"] <= 0 or p["mb"] + p["ml"] < tgt[1]:
+        return float("inf")
+    return float(min((gap / p["ml"]) ** (1.0 / p.get("mpow", 1.0)), 1.0))
 
 
 def rates(K, M, a, p=P):
@@ -64,7 +72,9 @@ def rates(K, M, a, p=P):
                 hazard(K, p["lamE"], p))
     if a == "T":
         scale = (p.get("trate_b", 1.0) + p.get("trate_k", 0.0) * K)
-        fkT = p["tk_g"] * (1 - K) ** p["tk_q"] if "tk_g" in p else p["eT"] * (1 - K)
+        fkT = p["eT"] * (1 - K)
+        if "tk_g" in p:   # data-informed flight learning g(1-K)^q, applied only for K >= tk_kmin (default: everywhere)
+            fkT = np.where(K >= p.get("tk_kmin", 0.0), p["tk_g"] * (1 - K) ** p["tk_q"], fkT)
         return (fkT, p["rT"] * scale * np.maximum(Mbar(K, p) - M, 0),
                 hazard(K, p["lamT"], p))
 
@@ -222,6 +232,18 @@ def policy_procedure(K, M, hist, p=P, tgt=TARGET, haz_max=0.05, wait_haz=False):
             fk, fm, h = rates(K, M, a, p)
             return float(fk) - float(h) * p["dK"]
         return max(["S", "E", "T"], key=net)
+    return "T"
+
+
+def policy_threshold(K, M, hist, p=P, tgt=TARGET, Kstar=0.7):
+    """Two-phase threshold rule (tuned baseline): build knowledge with the more productive of S and E
+    (net of expected shock loss) until K >= Kstar, then integrated testing; knowledge again if K < K_req
+    once M_req is reached. Kstar is tuned by simulation for each parameter set."""
+    if K < Kstar or (M >= tgt[1] and K < tgt[0]):
+        def net(a):
+            fk, fm, h = rates(K, M, a, p)
+            return float(fk) - float(h) * p["dK"]
+        return max(["S", "E"], key=net)
     return "T"
 
 

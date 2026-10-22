@@ -181,7 +181,7 @@ for i in range(30):
     frm(ws.cell(row=r,column=16),f'={e}IF(O{r}="done","Target region reached: decision checkpoint",IF(O{r}="3","T  integrated test",IF(MAX(L{r}:N{r})=L{r},"S  simulation / analysis",IF(MAX(L{r}:N{r})=M{r},"E  separate-effects test","T  integrated test (to learn)")))))',None,BLD)
     frm(ws.cell(row=r,column=17),f'={e}1-EXP(-K{r}*{cf}))',"0%")
     frm(ws.cell(row=r,column=18),f'=IF(B{r}="","",{bud}-B{r})',"0.0")
-ws["A37"]="Step 3: M < M_req, K ≥ K_need and hazard ≤ h_max → integrated test.  Step 4 (and 3b): otherwise the activity with the largest net K rate = K gain − hazard·δ_K.  Always screen the activity against cost, schedule and exposure (step 6) and re-assess after every result."
+ws["A37"]="Step 0 first: screen every candidate activity against cost, schedule and exposure and keep only the admissible ones.  Step 3: M < M_req, K ≥ K_need and hazard ≤ h_max → integrated test.  Step 4 (and 3b): otherwise the admissible activity with the largest net K rate = K gain − hazard·δ_K.  Re-assess after every result."
 ws["A37"].font=NOTE
 for col,w in zip("ABCDEFGHIJKLMNOPQR",[8,10,8,8,8,8,9,9,9,9,9,9,9,9,7,40,10,10]): ws.column_dimensions[col].width=w
 ws.row_dimensions[4].height=34; ws.freeze_panes="E5"

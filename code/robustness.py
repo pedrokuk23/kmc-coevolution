@@ -13,7 +13,7 @@ VARIANTS = {
                               haz="exp", haz_c=0.7225 / np.exp(-0.45), sim_mcredit=0.10),
 }
 
-def run_variant(name, n=1000):
+def run_variant(name, n=1000, x0=X0):
     p = dict(P); p.update(VARIANTS[name])
     g, V, pol, Q = solve_dp(p=p)
     pols = {"dp": make_dp_policy(g, pol, Q),
@@ -27,7 +27,7 @@ def run_variant(name, n=1000):
     out = {"variant": name, "K_need": K_need(p)}
     for k, f in pols.items():
         rng = np.random.default_rng(7)
-        r = np.array([simulate(f, p=p, rng=rng) for _ in range(n)])
+        r = np.array([simulate(f, p=p, x0=x0, rng=rng) for _ in range(n)])
         out[k] = float(r[:, 0].mean()); out[k + "_nr"] = float(np.mean(r[:, 0] >= 200))
     return out
 

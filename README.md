@@ -45,19 +45,22 @@ From `code/`:
 ./run_all.sh
 ```
 
-runs every script in order (about 1 h on 2 cores, most of it in `envelope.py`). Each script can also be run alone; the result files are included, so the figure scripts run without the experiments.
+runs every script in order (about 2 h on 2 cores; `extensions.py` and `calib_adaptive.py` resume from checkpoints if interrupted). Each script can also be run alone; the result files are included, so the figure scripts run without the experiments.
 
 | Script | Reproduces | Output |
 |---|---|---|
-| `kmc_model.py` | Model: ceilings and rates, Eqs. (8)–(11); value iteration, Eq. (12); decision rules, including the headroom procedure of Table 6; Monte Carlo simulation | module |
+| `kmc_model.py` | Model: ceilings and rates, Eqs. (8)–(11); value iteration, Eq. (12); decision rules, including the headroom procedure of Table 6 and the two-phase threshold baseline; Monte Carlo simulation | module |
 | `analysis.py` | Optimal curve and switch points; policy comparison and scenarios (Table 7); planner with misspecified parameters; recoding check (Sec. IV-D); estimation from assessments (Sec. V-F) | `results.json` |
 | `envelope.py` | Literature-anchored parameter envelope, 300 sets (Sec. V-D) | `envelope.json` |
 | `robustness.py` | Alternative functional forms, Eq. (19) (Sec. V-E, Table 8), and discretization check (Sec. V-A) | `robustness.json` |
 | `two_claims.py` | Two claims sharing an integrated test, Eq. (20) (Sec. V-G) | `two_claims.json` |
 | `relgrowth.py` | Fit of the saturating dynamics, Eq. (21), to reliability-growth data (Sec. VI-A) | `relgrowth.json` |
 | `launch_calib.py` | Test hazard and per-flight knowledge gain from launch data, Eq. (18) (Sec. VI-B) | `launch_calib.json` |
-| `launch_variant.py` | Data-informed variants (Table 8, last two rows) and procedure with knowledge built only by S or E (Sec. VI-B) | `launch_variant.json` |
-| `ktest_variant.py` | Variant that waits for K ≥ K_test, Eq. (17b) (end of Sec. V-D) | `ktest_variant.json` |
+| `launch_variant.py` | Launch-data variants from different starting knowledge (Table 8, last five rows) and procedure with knowledge built only by S or E (Sec. VI-B) | `launch_variant.json` |
+| `ktest_variant.py` | Hard exposure limit: the procedure waits for K ≥ K_test, Eq. (17b) (Secs. V-C, V-D) | `ktest_variant.json` |
+| `extensions.py` | Hard limit in the scenarios and forms, tuned two-phase threshold baseline, ablations of the couplings, launch-data variants (Secs. V-C, V-H, VI-B) | `extensions.json` |
+| `calib_replicates.py` | Estimation from noisy assessments, 40 replications: plans fitted once (Sec. V-F) | `calib_replicates.json` |
+| `calib_adaptive.py` | Estimation with re-fitting and re-planning after every assessment, with a weak prior (Sec. V-F) | `calib_adaptive.json` |
 | `fig1.py` … `fig8.py` | Figures 1–8 | `../figures/Fig1.pdf` … `Fig8.pdf` (and `.png`) |
 
 Monte Carlo runs use fixed seeds, so the numbers are reproducible on the same platform; other NumPy versions can change the last digit of Monte Carlo means.
