@@ -107,13 +107,14 @@ a[0].set_xlabel("Cumulative cost $c$ (BU)"); a[0].set_ylabel("Score")
 a[0].legend(frameon=False, fontsize=6.5, loc="lower right", ncol=1); a[0].set_ylim(0, 1)
 a[0].set_title("(a) Assessments and fitted replay", fontsize=9, loc="left")
 gF, VF, polF, QF = solve_dp(p=pf)
-dif = np.where(pol < 0, np.nan, (polF != pol).astype(float)).T
-a[1].imshow(np.ma.masked_where(polF.T < 0, polF.T), origin="lower", extent=[0, 1, 0, 1],
+gf, pT_ = fine_policy(g, Q); _, pF_ = fine_policy(gF, QF)
+dif = np.where(pT_ < 0, np.nan, (pF_ != pT_).astype(float)).T
+a[1].imshow(np.ma.masked_where(pF_.T < 0, pF_.T), origin="lower", extent=[0, 1, 0, 1],
             cmap=ListedColormap([C["S"], C["E"], C["T"]]), vmin=0, vmax=2, alpha=0.25)
-a[1].contour(g, g, np.ma.masked_where(polF < 0, polF).T, levels=[0.5, 1.5], colors="#222222", linewidths=0.6)
+a[1].contour(gf, gf, np.ma.masked_where(pF_ < 0, pF_).T, levels=[0.5, 1.5], colors="#222222", linewidths=0.6)
 for lab, xy in (("S", (0.10, 0.60)), ("E", (0.55, 0.15)), ("T", (0.86, 0.40))):
     a[1].text(*xy, lab, color=C[lab], fontsize=10, weight="bold", bbox=dict(fc="white", ec="none", alpha=0.7, pad=1))
-a[1].contourf(g, g, np.nan_to_num(dif), levels=[0.5, 1.5], colors="none", hatches=["////"])
+a[1].contourf(gf, gf, np.nan_to_num(dif), levels=[0.5, 1.5], colors="none", hatches=["////"])
 a[1].set_xlabel("$K$"); a[1].set_ylabel("$M$")
 a[1].set_title("(b) Policy fitted from 6 assessments",
                fontsize=9, loc="left")

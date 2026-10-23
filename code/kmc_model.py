@@ -113,6 +113,16 @@ def solve_dp(p=P, tgt=TARGET, n=121, dc=0.1, tol=1e-6, itmax=20000):
     return g, V, pol, Q
 
 
+def fine_policy(g, Q, tgt=TARGET, n=601):
+    """Policy map for plotting: argmin of the linearly interpolated Q on a fine grid (same rule as make_dp_policy).
+    Avoids the staircase that a contour of the integer map on the solver grid would draw."""
+    from scipy.ndimage import map_coordinates
+    gf = np.linspace(0, 1, n); K, M = np.meshgrid(gf, gf, indexing="ij")
+    c = [K.ravel() * (len(g) - 1), M.ravel() * (len(g) - 1)]
+    q = np.stack([map_coordinates(Q[k], c, order=1, mode="nearest").reshape(K.shape) for k in range(len(Q))])
+    return gf, np.where(in_target(K, M, tgt), -1, q.argmin(0))
+
+
 # ---------------------------------------------------------------- policies
 def make_dp_policy(g, pol, Q):
     n = len(g)

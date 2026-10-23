@@ -27,9 +27,10 @@ print("cheap-test switches", sw2, "cost", c2[-1])
 
 fig, ax = plt.subplots(1, 3, figsize=(7.16, 2.75), gridspec_kw={"width_ratios": [1.05, 1, 1]})
 a = ax[0]
-a.imshow(np.ma.masked_where(pol < 0, pol).T, origin="lower", extent=[0, 1, 0, 1],
+gf, pf_ = fine_policy(g, Q)
+a.imshow(np.ma.masked_where(pf_ < 0, pf_).T, origin="lower", extent=[0, 1, 0, 1],
          cmap=ListedColormap([C["S"], C["E"], C["T"]]), vmin=0, vmax=2, alpha=0.25, aspect="equal")
-a.contour(g, g, np.ma.masked_where(pol < 0, pol).T, levels=[0.5, 1.5], colors=C["ink"], linewidths=0.6)
+a.contour(gf, gf, np.ma.masked_where(pf_ < 0, pf_).T, levels=[0.5, 1.5], colors=C["ink"], linewidths=0.6)
 a.add_patch(plt.Rectangle(TARGET, 1-TARGET[0], 1-TARGET[1], fc="none", ec=C["ink"], lw=1.0, ls="--"))
 a.text(0.88, 0.93, "$X_f$", ha="center", va="center", fontsize=7.5)
 mm = np.linspace(0, 1, 50); a.plot(Kbar(mm), mm, color=C["mut"], lw=0.9, ls=":")
