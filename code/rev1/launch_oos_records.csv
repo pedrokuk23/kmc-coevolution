@@ -1,0 +1,85 @@
+vehicle,developer,date,group,outcome,ambiguous,note,source
+Kaituozhe-1,CASIC (China Aerospace Science and Industry Corp.),2003-09-16,N,failure,yes,"CASIC is a state-owned group separate from CASC (which had flown Long March since 1970) and had no prior orbital success (KT-1 flight 1 on 2002-09-15 also failed, outside window). Alternative: not new (Chinese state launch establishment already orbital) -> exclude.",https://space.skyrocket.de/doc_lau/kaituozhe-1.htm
+Falcon 1,SpaceX,2006-03-24,N,failure,no,,https://space.skyrocket.de/doc_lau/falcon-1.htm
+Falcon 1,SpaceX,2007-03-21,N,failure,no,,https://space.skyrocket.de/doc_lau/falcon-1.htm
+Falcon 1,SpaceX,2008-08-03,N,failure,no,,https://space.skyrocket.de/doc_lau/falcon-1.htm
+Falcon 1,SpaceX,2008-09-28,N,success,no,First success (RatSat).,https://space.skyrocket.de/doc_lau/falcon-1.htm
+Safir-1,Iran (Ministry of Defence aerospace industry / Iranian Space Agency),2008-08-17,N,failure,yes,Iran first claimed orbit then called it a suborbital test; US reported vehicle went off course. Alternative: exclude (not an orbital attempt). Date per Gunter/NSF (scheduled 17 Aug local).,https://www.nasaspaceflight.com/2019/02/iran-advancing-rockets-ten-years-first-satellite-launch/
+Safir-1,Iran (Ministry of Defence aerospace industry / Iranian Space Agency),2009-02-02,N,success,no,Omid reached LEO; first success.,https://www.nasaspaceflight.com/2019/02/iran-advancing-rockets-ten-years-first-satellite-launch/
+Unha-2,DPRK (KCST),2009-04-05,N,failure,no,"DPRK had never orbited a payload (1998 Paektusan-1 claim not verified). 2006 Unha-1 flight was suborbital, excluded.",https://space.skyrocket.de/doc_lau/unha.htm
+Naro-1 (KSLV-1),KARI (first stage built by Khrunichev),2009-08-25,N,failure,yes,Fairing failed to separate. Developer taken as KARI (vehicle integrator); first stage is Khrunichev's Angara URM-1 derivative. Alternative: E (experienced Russian first-stage developer).,https://space.skyrocket.de/doc_lau/naro-1.htm
+Naro-1 (KSLV-1),KARI (first stage built by Khrunichev),2010-06-10,N,failure,yes,"Lost ~137 s after launch. Same developer ambiguity as 2009 flight; alternative: exclude (not first flight of family, so not E either).",https://space.skyrocket.de/doc_lau/naro-1.htm
+Naro-1 (KSLV-1),KARI (first stage built by Khrunichev),2013-01-30,N,success,yes,STSAT-2C reached orbit; first success. Same developer ambiguity; alternative: exclude.,https://www.globalsecurity.org/space/world/rok/kslv-3rd-flight.htm
+Unha-3,DPRK (KCST),2012-04-12,N,failure,no,UTC date (13 Apr local). Failed during stage 1.,https://space.skyrocket.de/doc_lau/unha.htm
+Unha-3,DPRK (KCST),2012-12-12,N,success,no,Kwangmyongsong-3-2 reached orbit; first success.,https://space.skyrocket.de/doc_lau/unha.htm
+Kuaizhou-1,CASIC,2013-09-25,N,success,yes,CASIC first orbital success. Same CASIC-vs-CASC ambiguity as KT-1 (alternative: exclude). Gunter also lists an unconfirmed 2012-03-17 Kuaizhou-1T R&D flight (date asterisked); if that was an orbital success this 2013 flight would not be N.,https://space.skyrocket.de/doc_lau/kuaizhou-1.htm
+Super Strypi (SPARK),Sandia National Laboratories / Univ. of Hawaii / Aerojet Rocketdyne (ORS),2015-11-04,N,failure,no,"Broke up ~58 s after launch. Aerojet was a propulsion supplier, not an orbital vehicle developer.",https://space.skyrocket.de/doc_lau/super-strypi.htm
+Electron,Rocket Lab,2017-05-25,N,failure,no,,https://space.skyrocket.de/doc_lau/electron.htm
+Electron,Rocket Lab,2018-01-21,N,success,no,First success.,https://space.skyrocket.de/doc_lau/electron.htm
+Zhuque-1,LandSpace,2018-10-27,N,failure,no,Only flight of vehicle.,https://space.skyrocket.de/doc_lau/zhuque-1.htm
+OS-M1,OneSpace,2019-03-27,N,failure,no,Only flight of vehicle.,https://space.skyrocket.de/doc_lau/os-m.htm
+Hyperbola-1,iSpace (Beijing Interstellar Glory),2019-07-25,N,success,no,First attempt succeeded.,https://space.skyrocket.de/doc_lau/shuang-quxian-1.htm
+Rocket 3.1,Astra,2020-09-12,N,failure,no,Rocket-3.0 destroyed in wet dress rehearsal 2020-03-23 (not an attempt); Rocket-1/2 2018 flights suborbital (excluded).,https://space.skyrocket.de/doc_lau/astra.htm
+Rocket 3.2,Astra,2020-12-15,N,failure,no,Upper stage stopped shortly before orbital velocity.,https://space.skyrocket.de/doc_lau/astra.htm
+Rocket 3.3 (LV0006),Astra,2021-08-28,N,failure,no,,https://space.skyrocket.de/doc_lau/astra.htm
+Rocket 3.3 (LV0007),Astra,2021-11-20,N,success,no,First success (STP-27AD2).,https://space.skyrocket.de/doc_lau/astra.htm
+Qased,IRGC (Islamic Revolutionary Guard Corps),2020-04-22,N,success,yes,IRGC program distinct from the ISA/MoD program that had orbited payloads since 2009. Alternative: exclude (state already orbital / not a new organization in the sense of the protocol's state-agency clause).,https://www.seradata.com/iran-launches-new-qased-rocket-type-with-noor-military-sat-aboard
+LauncherOne,Virgin Orbit,2020-05-25,N,failure,no,Air-launched; orbital attempt (not a drop test).,https://space.skyrocket.de/doc_lau/launcherone.htm
+LauncherOne,Virgin Orbit,2021-01-17,N,success,no,First success.,https://space.skyrocket.de/doc_lau/launcherone.htm
+Ceres-1,Galactic Energy,2020-11-07,N,success,no,First attempt succeeded.,https://space.skyrocket.de/doc_lau/ceres-1.htm
+Firefly Alpha,Firefly Aerospace,2021-09-03,N,failure,no,,https://space.skyrocket.de/doc_lau/firefly.htm
+Firefly Alpha,Firefly Aerospace,2022-10-01,N,failure,yes,"Partial failure: payloads reached a lower-than-planned orbit and decayed within days; failure per protocol. Alternative: success (payloads did reach orbit), which would end Firefly's N sequence here.",https://space.skyrocket.de/doc_lau/firefly.htm
+Firefly Alpha,Firefly Aerospace,2023-09-15,N,success,yes,"VICTUS NOX. Alternative: exclude (Firefly had already placed payloads in orbit on the 2022-10-01 flight, so arguably no longer 'new').",https://space.skyrocket.de/doc_lau/firefly.htm
+Kinetica-1 (Lijian-1),CAS Space (spin-off of Chinese Academy of Sciences),2022-07-27,N,success,no,CAS had no prior orbital launch vehicle; first attempt succeeded.,https://space.skyrocket.de/doc_lau/lijian-1.htm
+Zhuque-2,LandSpace,2022-12-14,N,failure,no,LandSpace still new (Zhuque-1 failed).,https://space.skyrocket.de/doc_lau/zhuque-2.htm
+Zhuque-2,LandSpace,2023-07-12,N,success,no,First success.,https://space.skyrocket.de/doc_lau/zhuque-2.htm
+RS1,ABL Space Systems,2023-01-10,N,failure,no,Only flight.,https://space.skyrocket.de/doc_lau/rs1.htm
+Terran 1,Relativity Space,2023-03-23,N,failure,no,Only flight.,https://space.skyrocket.de/doc_lau/terran-1.htm
+Tianlong-2,Space Pioneer,2023-04-02,N,success,no,First attempt succeeded.,https://space.skyrocket.de/doc_lau/tianlong-2.htm
+Gravity-1 (Yinli-1),Orienspace,2024-01-11,N,success,no,First attempt succeeded (sea launch).,https://www.space.com/china-orienspace-gravity-1-rocket-launch-success-video
+KAIROS,Space One,2024-03-13,N,failure,no,,https://space.skyrocket.de/doc_lau/kairos.htm
+KAIROS,Space One,2024-12-18,N,failure,no,,https://space.skyrocket.de/doc_lau/kairos.htm
+New Glenn,Blue Origin,2025-01-16,N,success,yes,"Blue Origin had only suborbital (New Shepard) experience, never orbit -> N. Payload reached orbit; booster landing failed. Alternative: E if suborbital launch experience is counted.",https://space.skyrocket.de/doc_lau/new-glenn.htm
+Spectrum,Isar Aerospace,2025-03-30,N,failure,no,,https://space.skyrocket.de/doc_lau/spectrum.htm
+Eris,Gilmour Space Technologies,2025-07-29,N,failure,no,UTC date (30 Jul 08:30 AEST).,https://space.skyrocket.de/doc_lau/eris_gspace.htm
+HANBIT-Nano,Innospace,2025-12-23,N,failure,no,"UTC date (22 Dec 22:13 local, Alcantara, Brazil).",https://www.space.com/space-exploration/launches-spacecraft/south-korean-startup-innospace-fails-on-its-1st-orbital-launch-attempt
+Strela,NPO Mashinostroyeniya,2003-12-05,E,success,yes,Minimal conversion of UR-100NUTTKh ICBM; same first stage as Khrunichev's Rokot (flying since 2000). Alternative: exclude (variant / existing stage under new operator).,https://russianforces.org/blog/2003/12/first_launch_of_the_strela_lau.shtml
+Delta IV Heavy,Boeing,2004-12-21,E,failure,yes,"Partial failure (CBCs underperformed, lower orbit) -> failure. Variant of Delta IV (first flown 2002); alternative: exclude per variant rule.",https://space.skyrocket.de/doc_lau/delta-4.htm
+Volna-O,Makeyev SRC,2005-06-21,E,failure,yes,"Cosmos 1; stage 1 turbopump shutdown. R-29R SLBM conversion; Makeyev experienced via Shtil (R-29RM, 1998). Alternative: exclude (SLBM-derived variant; Volna had flown suborbitally since 1995).",https://space.skyrocket.de/doc_lau/shtil_volna.htm
+Zenit-3SLB,Yuzhnoye / Land Launch,2008-04-28,E,success,yes,Variant of Zenit-3SL (Zenit-2SB stages); included because named in task. Alternative: exclude per protocol variant rule.,https://space.skyrocket.de/doc_lau/zenit-3.htm
+H-IIB,JAXA / Mitsubishi Heavy Industries,2009-09-10,E,success,yes,"New 5.2 m two-engine first stage, but H-IIA derivative. Alternative: exclude as variant.",https://space.skyrocket.de/doc_lau/h-2b.htm
+Falcon 9,SpaceX,2010-06-04,E,success,no,SpaceX experienced since Falcon 1 (2008).,https://space.skyrocket.de/doc_lau/falcon-9.htm
+Minotaur IV,Orbital Sciences,2010-09-26,E,success,yes,"First Minotaur IV flight (2010-04-22, HTV-2a) suborbital and excluded. New Peacekeeper first stage within Minotaur family. Alternative: exclude as Minotaur variant.",https://space.skyrocket.de/doc_lau/minotaur-4.htm
+Vega,ESA / ELV (Avio),2012-02-13,E,success,yes,Developer taken as ESA programme (experienced via Ariane). Alternative: N if prime ELV/Avio (no prior own orbital vehicle) is taken as developer.,https://space.skyrocket.de/doc_lau_fam/vega.htm
+Antares,Orbital Sciences,2013-04-21,E,success,no,,https://space.skyrocket.de/doc_lau/antares_osc.htm
+Epsilon,JAXA / IHI Aerospace,2013-09-14,E,success,no,,https://space.skyrocket.de/doc_lau/epsilon.htm
+Soyuz-2.1v,TsSKB-Progress,2013-12-28,E,success,yes,"New core first stage with NK-33, no strap-ons, but Soyuz-2 derived. Alternative: exclude as variant.",https://www.satellitetoday.com/launch/2014/01/02/new-soyuz-2-1v-rocket-completes-first-successful-launch/
+Angara A5,Khrunichev,2014-12-23,E,success,no,"First Angara family flight (Angara-1.2PP, 2014-07-09) was suborbital and excluded.",https://space.skyrocket.de/doc_lau_fam/angara.htm
+Long March 6,CASC (SAST),2015-09-19,E,success,no,,https://space.skyrocket.de/doc_lau/cz-6.htm
+Long March 11,CASC (CALT),2015-09-25,E,success,no,,https://space.skyrocket.de/doc_lau/cz-11.htm
+Long March 7,CASC (CALT),2016-06-25,E,success,no,,https://space.skyrocket.de/doc_lau/cz-7.htm
+Long March 5,CASC (CALT),2016-11-03,E,success,no,,https://space.skyrocket.de/doc_lau/cz-5.htm
+SS-520-4,JAXA / ISAS,2017-01-14,E,failure,yes,UTC date (15 Jan JST). Sounding rocket with added third stage. Alternative: exclude (variant of suborbital SS-520).,https://space.skyrocket.de/doc_lau/ss-520.htm
+Kaituozhe-2,CASIC,2017-03-02,E,success,yes,CASIC experienced via Kuaizhou-1 (2013); new DF-31-derived first stage. Alternative: depends on CASIC status (see KT-1/KZ-1).,https://space.skyrocket.de/doc_lau/kaituozhe-2.htm
+GSLV Mk III (LVM3),ISRO,2017-06-05,E,success,no,"LVM3-X/CARE (2014-12-18) suborbital, excluded.",https://space.skyrocket.de/doc_lau/gslv-mk3.htm
+Simorgh,Iran (Ministry of Defence / Iranian Space Agency),2017-07-27,E,failure,yes,"Unclear whether orbital attempt or suborbital test (Iran called it a test; 2016-04-19 flight suborbital). Alternative: exclude, in which case the first orbital attempt is 2019-01-15 (failure, stage 3).",https://space.skyrocket.de/doc_lau/simorgh.htm
+Falcon Heavy,SpaceX,2018-02-06,E,success,yes,Payload delivered; centre-core landing failed. First stage = three Falcon 9-derived cores. Alternative: exclude as Falcon 9 variant.,https://www.space.com/39606-spacex-falcon-heavy-fourth-car-space.html
+Jielong-1 (Smart Dragon-1),China Rocket Co. (CASC/CALT subsidiary),2019-08-17,E,success,yes,New commercial subsidiary of experienced CASC. Alternative: N if subsidiary treated as a new organization.,https://space.skyrocket.de/doc_lau/jielong-1.htm
+Kuaizhou-11,CASIC (ExPace),2020-07-10,E,failure,no,Stage 3 failed to ignite.,https://space.skyrocket.de/doc_lau/kuaizhou-11.htm
+Long March 8,CASC (CALT),2020-12-22,E,success,yes,Core stage inherited from Long March 7. Alternative: exclude as variant.,https://space.skyrocket.de/doc_lau/cz-8.htm
+Nuri (KSLV-2),KARI,2021-10-21,E,failure,yes,Stage 3 early shutdown. KARI's only prior success (Naro-1) used a Russian first stage. Alternative: N if Naro-1 success is credited to Khrunichev.,https://space.skyrocket.de/doc_lau/kslv-2.htm
+Long March 6A,CASC (SAST),2022-03-29,E,success,yes,Stretched two-engine first stage plus boosters vs LM-6. Alternative: exclude as variant.,https://space.skyrocket.de/doc_lau/cz-6.htm
+Vega-C,ESA / Avio,2022-07-13,E,success,yes,New P120C first stage replacing P80. Alternative: exclude as Vega upgrade.,https://space.skyrocket.de/doc_lau_fam/vega.htm
+SSLV,ISRO,2022-08-07,E,failure,no,VTM failed to inject into orbit.,https://space.skyrocket.de/doc_lau/sslv.htm
+SLS,NASA (Boeing core stage),2022-11-16,E,success,no,Artemis I.,https://space.skyrocket.de/doc_lau/sls.htm
+Jielong-3 (Smart Dragon-3),China Rocket Co. (CASC subsidiary),2022-12-09,E,success,no,Developer experienced via Jielong-1 (2019).,https://space.skyrocket.de/doc_lau/jielong-3.htm
+Qaem-100,IRGC,2023-03-04,E,failure,yes,"Nahid-1; failure not acknowledged by Iran (reported via Israeli UN letter). 2022-11-05 flight suborbital, excluded. IRGC experienced via Qased (2020). Alternative: exclude (attempt not officially confirmed).",https://en.wikipedia.org/wiki/Qaem_100
+H3,JAXA / Mitsubishi Heavy Industries,2023-03-07,E,failure,no,Second stage failed to ignite.,https://space.skyrocket.de/doc_lau/h-3.htm
+Chollima-1,DPRK (NATA),2023-05-30,E,failure,no,"UTC date (31 May local). New first stage (Hwasong-17 derived), DPRK experienced via Unha-3.",https://space.skyrocket.de/doc_lau/chollima-1.htm
+Vulcan,United Launch Alliance,2024-01-08,E,success,no,"Cert-1 / Peregrine delivered (lander later failed, not a launch failure).",https://www.seradata.com/ula-and-usa-back-in-the-game-with-vulcan-maiden-launch-of-peregrine-unmanned-lunar-lander
+Unnamed kerolox launch vehicle,DPRK (NATA),2024-05-27,E,failure,yes,Exploded ~2 min into flight. Possibly a Chollima-1 derivative with a new kerolox first stage. Alternative: exclude as variant.,https://space.skyrocket.de/doc_lau/nk-kerolox-lv.htm
+Ariane 6,ESA / ArianeGroup,2024-07-09,E,success,yes,"Cubesats deployed; upper-stage APU failure prevented the third burn, so the two reentry capsules were not released and the stage was not deorbited. Alternative: failure (partial).",https://spacepolicyonline.com/news/ariane-6-lifts-off-but-second-stage-anomaly-spoils-the-day/
+Long March 12,CASC (SAST),2024-11-30,E,success,no,,https://space.skyrocket.de/doc_lau/cz-12.htm
+Zoljanah,Iran (Ministry of Defence),2025-09-18,E,failure,yes,"Undeclared launch; orbital intent and failure inferred from imagery and an IRGC-linked report; earlier flights (2021, 2022) suborbital. Alternative: exclude.",https://www.seradata.com/iran-suspected-of-suffering-zoljanah-1-orbital-launch-failure
+Zhuque-3,LandSpace,2025-12-03,E,success,no,Orbit reached; booster landing failed. LandSpace experienced via Zhuque-2 (2023).,https://space.skyrocket.de/doc_lau/zhuque-3.htm
+Long March 12A,CASC (SAST),2025-12-23,E,success,yes,New methalox first stage despite LM-12 name. Orbit reached; booster recovery failed. Alternative: exclude as LM-12 variant.,https://mobile.chinadaily.com.cn/cn/html5/2025-12/24/content_005_694aef49ed50ccabe151f1b8.htm
