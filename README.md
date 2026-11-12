@@ -1,6 +1,6 @@
 # Knowledge–Maturity Coevolution (KMC): code and supplementary material
 
-Code, results, figures and Supplementary Material S1 for the article
+Code, results, figures and Supplementary Materials S1–S3 for the article
 
 > P. K. de Albuquerque, D. R. Pleffken, C. S. Cerqueira, and L. Galembeck, "Knowledge–Maturity Coevolution: A Coupled Evidence Model for Selecting Simulation and Test Activities in Constrained Engineering Development," submitted to *IEEE Access*, 2026.
 
@@ -16,8 +16,28 @@ Equation, table, figure and section numbers below refer to the article.
 | `code/tutorial/` | Scripts that reproduce every number and figure of Supplementary Material S1 |
 | `code/guide/` | Sources of the S1 guide (`guide.js`) and of the worksheet (`ws.py`) |
 | `code/s2/` | Source of Supplementary Material S2 (`build_s2.py`) and of its figures (`figs_s2.py`) |
+| `code/s3/` | Source of Supplementary Material S3, studies added in revision (`build_s3.py`) |
+| `code/rev1/` | Results of the revision studies |
 | `figures/` | Figures 1–8 of the article (vector PDF and 300-dpi PNG) |
-| `supplementary/` | Supplementary Material S1: application guide (`.pdf`, `.docx`) and calibration and decision worksheet (`.xlsx`); Supplementary Material S2: documented programs (`.pdf`, `.docx`) |
+| `supplementary/` | Supplementary Material S1: application guide (`.pdf`, `.docx`) and calibration and decision worksheet (`.xlsx`); Supplementary Material S2: documented programs (`.pdf`, `.docx`); Supplementary Material S3: studies added in revision (`.pdf`, `.docx`) |
+
+## Revision 1 (v1.1.0)
+
+Version 1.1.0 adds the studies made in response to the reviewers (scripts `code/rev1_*.py`, results in `code/rev1/`, Supplementary Material S3 built by `code/s3/build_s3.py`) and two corrections:
+
+- `relgrowth.py`: the profile-likelihood interval of Eq. (21) now profiles from several starting values of ν and locates each endpoint by root search. The 90% interval for the second NIST dataset is 0.664–0.988 (0.67–0.96 in v1.0.0, where the inner optimizer missed the profile minimum for M_∞ near 1).
+- `fig8.py`: the test branch of the flowchart now includes the maturity-deficit condition of Table 6 (M < M_req), as in `kmc_model.policy_procedure`, which generated all results.
+
+In the revised article the box plot of policy costs (`Fig4`, produced by `fig4.py`) moved to S3 (Fig. S3-1), so the files `Fig5`–`Fig8` here are Figs. 4–7 of the revised article. Section V-G now uses the 46⁴ grid (`rev1/two_claims_final.json`) instead of `two_claims.json` (26⁴).
+
+| Script | Reviewer item | Output |
+|---|---|---|
+| `rev1_valdata.py` | Validation-data state D separated from maturity; 3-D dynamic program (R1.1) | `rev1/valdata_*.json` |
+| `rev1_valdata_rule.py` | Data-aware knowledge step of the headroom procedure (R1.1) | `rev1/valdata_rule.json` |
+| `rev1_stopping.py` | Observable acceptance review with confirmation cost; decision agreement with the true state (R1.2, R2.3) | `rev1/stopping.json`, `rev1/decision_agreement.json` |
+| `rev1_constrained.py` | Optimum recomputed under the same hard exposure limit (R1.3) | `rev1/constrained.json` |
+| `rev1_two_claims_conv.py`, `rev1_two_claims_final.py` | Grid convergence and confidence interval of the two-claim gap (R1.4) | `rev1/two_claims_*.json` |
+| `rev1_assessors.py` | Assessor disagreement and bias (R2.2) | `rev1/assessors.json` |
 
 ## Data
 

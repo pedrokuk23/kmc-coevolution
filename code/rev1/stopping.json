@@ -1,0 +1,157 @@
+{
+ "C_CONF": 1.0,
+ "summary": {
+  "0.0": {
+   "ref_oracle_mean": 21.372500000000034,
+   "dp_known": {
+    "mean": 24.402500000000057,
+    "excess_vs_oracle": 14.17709673646048,
+    "reviews_mean": 1.5,
+    "not_accepted": 0,
+    "premature_rate": 0.275,
+    "deficit_when_premature": 0.01571732189137075,
+    "decision_agreement": 0.8429926238145417
+   },
+   "dp": {
+    "mean": 24.275000000000055,
+    "excess_vs_oracle": 13.580535735173772,
+    "reviews_mean": 1.4,
+    "not_accepted": 0,
+    "premature_rate": 0.3,
+    "deficit_when_premature": 0.008562222839290099,
+    "decision_agreement": 0.8275132275132275,
+    "agreement_by_margin": {
+     "-9..-0.15": [
+      0.8552188552188552,
+      297
+     ],
+     "-0.15..-0.05": [
+      0.967479674796748,
+      123
+     ],
+     "-0.05..0.05": [
+      0.7759336099585062,
+      241
+     ],
+     "0.05..0.15": [
+      0.7816901408450704,
+      284
+     ],
+     "0.15..9": [
+      null,
+      0
+     ]
+    },
+    "Kneed_abs_error_median": 0.024155402190880526
+   },
+   "headroom": {
+    "mean": 24.54750000000006,
+    "excess_vs_oracle": 14.855538659492428,
+    "reviews_mean": 1.4,
+    "not_accepted": 0,
+    "premature_rate": 0.225,
+    "deficit_when_premature": 0.007770311810895294,
+    "decision_agreement": 0.7319371727748691,
+    "agreement_by_margin": {
+     "-9..-0.15": [
+      0.8552188552188552,
+      297
+     ],
+     "-0.15..-0.05": [
+      0.9921875,
+      128
+     ],
+     "-0.05..0.05": [
+      0.5742857142857143,
+      350
+     ],
+     "0.05..0.15": [
+      0.65,
+      180
+     ],
+     "0.15..9": [
+      null,
+      0
+     ]
+    },
+    "Kneed_abs_error_median": 0.024464964592123994
+   }
+  },
+  "0.03": {
+   "ref_oracle_mean": 21.372500000000034,
+   "dp_known": {
+    "mean": 27.665000000000077,
+    "excess_vs_oracle": 29.442040004679072,
+    "reviews_mean": 3.05,
+    "not_accepted": 0,
+    "premature_rate": 0.1,
+    "deficit_when_premature": 0.017009076628752423,
+    "decision_agreement": 0.8297872340425532
+   },
+   "dp": {
+    "mean": 28.532500000000084,
+    "excess_vs_oracle": 33.50099426833566,
+    "reviews_mean": 3.5,
+    "not_accepted": 1,
+    "premature_rate": 0.175,
+    "deficit_when_premature": 0.01036516158766194,
+    "decision_agreement": 0.7901345291479821,
+    "agreement_by_margin": {
+     "-9..-0.15": [
+      0.8552188552188552,
+      297
+     ],
+     "-0.15..-0.05": [
+      0.967479674796748,
+      123
+     ],
+     "-0.05..0.05": [
+      0.7759336099585062,
+      241
+     ],
+     "0.05..0.15": [
+      0.6986301369863014,
+      438
+     ],
+     "0.15..9": [
+      0.9375,
+      16
+     ]
+    },
+    "Kneed_abs_error_median": 0.02539564794185034
+   },
+   "headroom": {
+    "mean": 26.647500000000072,
+    "excess_vs_oracle": 24.68124926892048,
+    "reviews_mean": 2.375,
+    "not_accepted": 0,
+    "premature_rate": 0.1,
+    "deficit_when_premature": 0.0057437337292137736,
+    "decision_agreement": 0.6843118383060636,
+    "agreement_by_margin": {
+     "-9..-0.15": [
+      0.8552188552188552,
+      297
+     ],
+     "-0.15..-0.05": [
+      0.9921875,
+      128
+     ],
+     "-0.05..0.05": [
+      0.5690140845070423,
+      355
+     ],
+     "0.05..0.15": [
+      0.49612403100775193,
+      258
+     ],
+     "0.15..9": [
+      0.0,
+      1
+     ]
+    },
+    "Kneed_abs_error_median": 0.024045317053356552
+   }
+  }
+ }
+}

@@ -1,0 +1,107 @@
+{
+ "runs": 600,
+ "C_CONF": 1.0,
+ "K_need": 0.7142857142857143,
+ "results": {
+  "sd 0.05 | headroom": {
+   "mean": 26.032000000000068,
+   "excess_vs_true_state": 12.620323169105085,
+   "decision_agreement": 0.8744115645746066,
+   "early_test_share": 0.10005624361897936,
+   "premature_acceptance": 0.17166666666666666,
+   "not_accepted": 0
+  },
+  "sd 0.05 | optimal": {
+   "mean": 25.7508333333334,
+   "excess_vs_true_state": 13.219506833254036,
+   "decision_agreement": 0.8101869281166536,
+   "early_test_share": 0.028297444622473692,
+   "premature_acceptance": 0.23,
+   "not_accepted": 0
+  },
+  "sd 0.10 | headroom": {
+   "mean": 28.204500000000092,
+   "excess_vs_true_state": 22.019049816496093,
+   "decision_agreement": 0.7732080505756136,
+   "early_test_share": 0.15715647278248937,
+   "premature_acceptance": 0.24666666666666667,
+   "not_accepted": 0
+  },
+  "sd 0.10 | optimal": {
+   "mean": 28.017166666666764,
+   "excess_vs_true_state": 23.18396658483881,
+   "decision_agreement": 0.6997456687399628,
+   "early_test_share": 0.08962648773163803,
+   "premature_acceptance": 0.25666666666666665,
+   "not_accepted": 0
+  },
+  "K bias +0.05 | headroom": {
+   "mean": 26.279000000000067,
+   "excess_vs_true_state": 13.688901066414893,
+   "decision_agreement": 0.7708849766735957,
+   "early_test_share": 0.34598444523677796,
+   "premature_acceptance": 0.0,
+   "not_accepted": 0
+  },
+  "K bias +0.05 | optimal": {
+   "mean": 28.436833333333414,
+   "excess_vs_true_state": 25.029128347928165,
+   "decision_agreement": 0.7082632832009251,
+   "early_test_share": 0.001975991066710613,
+   "premature_acceptance": 0.0,
+   "not_accepted": 3
+  },
+  "K bias -0.05 | headroom": {
+   "mean": 23.359666666666712,
+   "excess_vs_true_state": 1.0592044069825501,
+   "decision_agreement": 0.88823153702413,
+   "early_test_share": 0.0,
+   "premature_acceptance": 0.0,
+   "not_accepted": 0
+  },
+  "K bias -0.05 | optimal": {
+   "mean": 23.56950000000005,
+   "excess_vs_true_state": 3.628769281500799,
+   "decision_agreement": 0.8650700114336705,
+   "early_test_share": 0.0,
+   "premature_acceptance": 0.0,
+   "not_accepted": 0
+  },
+  "K,M bias +0.05 | headroom": {
+   "mean": 21.922000000000025,
+   "excess_vs_true_state": -5.160466944025888,
+   "decision_agreement": 0.7730782234952542,
+   "early_test_share": 0.44287839310479094,
+   "premature_acceptance": 1.0,
+   "not_accepted": 0
+  },
+  "K,M bias +0.05 | optimal": {
+   "mean": 21.974500000000027,
+   "excess_vs_true_state": -3.3840178800425558,
+   "decision_agreement": 0.7348383402551173,
+   "early_test_share": 0.0014198304917655321,
+   "premature_acceptance": 0.9766666666666667,
+   "not_accepted": 14
+  },
+  "sd 0.05, K bias +0.05 | headroom": {
+   "mean": 26.720000000000073,
+   "excess_vs_true_state": 15.596766866874923,
+   "decision_agreement": 0.8103398610528671,
+   "early_test_share": 0.26425318867974823,
+   "premature_acceptance": 0.31666666666666665,
+   "not_accepted": 0
+  },
+  "sd 0.05, K bias +0.05 | optimal": {
+   "mean": 25.926500000000065,
+   "excess_vs_true_state": 13.991866046239032,
+   "decision_agreement": 0.7395434745049364,
+   "early_test_share": 0.11056525566130056,
+   "premature_acceptance": 0.31833333333333336,
+   "not_accepted": 0
+  }
+ },
+ "ref_true_state_plus_review": {
+  "headroom": 23.114833333333372,
+  "optimal": 22.744166666666707
+ }
+}

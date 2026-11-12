@@ -62,7 +62,7 @@ const SP = () => new Paragraph({ children: [], spacing: { after: 60 } });
 const body = [
   new Paragraph({ children: [new TextRun({ text: "Supplementary Material S1", font: FONT, size: 22, color: "8A6A4F", bold: true })], spacing: { after: 60 } }),
   new Paragraph({ children: [new TextRun({ text: "Applying Knowledge–Maturity Coevolution: a step-by-step guide with a worked example", font: FONT, size: 36, bold: true })], spacing: { after: 160 } }),
-  P("This guide shows how to apply the method of the paper to a real development claim, from an organization's past records to the decision at each review. It uses the paper's notation and step numbers (Table 6, headroom procedure; Table 11, calibration protocol; Fig. 8, flowchart). Every number in the worked example was computed with the paper's code; the organization (\"Org X\"), its projects and records are **fictional** and serve only to illustrate the arithmetic."),
+  P("This guide shows how to apply the method of the paper to a real development claim, from an organization's past records to the decision at each review. It uses the paper's notation and step numbers (Table 6, headroom procedure; Table 11, calibration protocol; Fig. 7, flowchart). Every number in the worked example was computed with the paper's code; the organization (\"Org X\"), its projects and records are **fictional** and serve only to illustrate the arithmetic."),
   BOX("What you need", [
     "• An assessment log for one or more past programs (cost, activity class, K, M, shocks), or at least the outcome history of past integrated tests.",
     "• A review board that scores K and M for each claim at each review (Section 1).",
@@ -74,7 +74,7 @@ const body = [
     ["1", "Score K and M at every review; keep the log", "Sec. III-H, IV-A; Tables 4, 11-1", "Sec. 1–2"],
     ["2", "Calibrate the coefficients from records + public priors", "Table 11, steps 2–4", "Sec. 3"],
     ["3", "Compute the test threshold K_{test} = max(K_{need}, K_{haz})", "Eq. (17b), Table 6 steps 3/3b", "Sec. 4.2"],
-    ["4", "At each review, choose the next activity", "Table 6, steps 0 and 3–5; Fig. 8", "Sec. 4.3–4.5"],
+    ["4", "At each review, choose the next activity", "Table 6, steps 0 and 3–5; Fig. 7", "Sec. 4.3–4.5"],
     ["5", "After the project, update the coefficients", "Table 11, steps 5–6", "Sec. 5"],
   ], [600, 3700, 2700, 2026]),
 
@@ -214,7 +214,7 @@ const body = [
 
   H1("7. Optional checks with the code"),
   P("The procedure above needs only the spreadsheet. The Python package archived with the paper adds three checks: the optimal policy and the exact derivative D_{a} (solve_dp), a Monte Carlo of the plan (simulate), and a sweep of the exposure limit. Replace the dictionary P in kmc_model.py with the organization's parameter card, set TARGET and X0, and call policy_procedure(K, M, hist, p, tgt, haz_max, wait_haz=True) at each review (wait_haz=False reproduces the paper, where step 3b re-approves the limit). The scripts that reproduce this guide (tutorial/calib.py, apply.py, update.py, figs.py) are included."),
-  ...IMG("../../figures/Fig8.png", 330, 462, "Figure S5. The procedure inside the calibration loop (paper, Fig. 8)."),
+  ...IMG("../../figures/Fig8.png", 330, 462, "Figure S5. The procedure inside the calibration loop (paper, Fig. 7)."),
 ];
 
 const doc = new Document({

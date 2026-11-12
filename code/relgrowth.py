@@ -23,15 +23,23 @@ def fit_kmc(t, T):
     la, lm, lr = best.x
     return dict(a=float(np.exp(la)), m=float(1 / (1 + np.exp(-lm))), r=float(np.exp(lr)), nll=float(best.fun)), best.x
 
-def profile_m(t, T, nll_hat):
-    ms = np.linspace(0.01, 0.995, 200); prof = []
-    for m in ms:
-        lm = np.log(m / (1 - m))
-        f = lambda th: nll_kmc([th[0], lm, th[1]], t, T)
-        best = min((minimize(f, [np.log(len(t) / T * 3), lr0], method="Nelder-Mead") for lr0 in np.log([1e-4, 1e-3, 1e-2])), key=lambda r: r.fun)
-        prof.append(best.fun)
-    prof = np.array(prof); ok = ms[prof - nll_hat <= chi2.ppf(0.90, 1) / 2]
-    return float(ok.min()), float(ok.max())
+def profile_nll(m, t, T):
+    """Profile negative log-likelihood at fixed ceiling m, minimized over phi0 > 0 and nu > 0 from a grid of starts
+    (a small nu is needed when m is near 1, so the starts span several decades)."""
+    lm = np.log(m / (1 - m)); f = lambda th: nll_kmc([th[0], lm, th[1]], t, T)
+    return min(minimize(f, [la0, lr0], method="Nelder-Mead", options=dict(xatol=1e-10, fatol=1e-12, maxiter=40000)).fun
+               for la0 in np.log(len(t) / T * np.array([1, 3, 10, 30])) for lr0 in np.log([1e-6, 1e-5, 1e-4, 1e-3, 3e-3, 1e-2, 5e-2]))
+
+def profile_m(t, T, nll_hat, m_hat, level=0.90):
+    """Profile-likelihood interval for m: endpoints where 2[l(m_hat) - l_p(m)] = chi2_1(level) (2.706 for 90%),
+    found by root search on each side; an endpoint is reported at the bound (0.005 or 0.9999) if the profile does
+    not cross the cutoff there."""
+    from scipy.optimize import brentq
+    cut = chi2.ppf(level, 1) / 2
+    g = lambda m: profile_nll(m, t, T) - nll_hat - cut
+    lo = brentq(g, 0.005, m_hat, xtol=1e-5) if g(0.005) > 0 else 0.005
+    hi = brentq(g, m_hat, 0.9999, xtol=1e-5) if g(0.9999) > 0 else 0.9999
+    return float(lo), float(hi)
 
 def fit_pl(t, T):
     n = len(t); b = n / np.sum(np.log(T / t)); l = n / T ** b
@@ -43,7 +51,7 @@ if __name__ == "__main__":
     for name, (t, T) in DATA.items():
         t = np.array(t, float)
         k, _ = fit_kmc(t, T); pl = fit_pl(t, T)
-        lo, hi = profile_m(t, T, k["nll"])
+        lo, hi = profile_m(t, T, k["nll"], k["m"])
         aic_k = 2 * 3 + 2 * k["nll"]; aic_p = 2 * 2 + 2 * pl["nll"]
         mtbf_end_k = 1 / (k["a"] * ((1 - k["m"]) + k["m"] * np.exp(-k["r"] * T)))
         mtbf_end_p = 1 / (pl["lam"] * pl["beta"] * T ** (pl["beta"] - 1))
