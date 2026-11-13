@@ -74,7 +74,7 @@ const body = [
     ["1", "Score K and M at every review; keep the log", "Sec. III-H, IV-A; Tables 4, 11-1", "Sec. 1–2"],
     ["2", "Calibrate the coefficients from records + public priors", "Table 11, steps 2–4", "Sec. 3"],
     ["3", "Compute the test threshold K_{test} = max(K_{need}, K_{haz})", "Eq. (17b), Table 6 steps 3/3b", "Sec. 4.2"],
-    ["4", "At each review, choose the next activity", "Table 6, steps 0 and 3–5; Fig. 7", "Sec. 4.3–4.5"],
+    ["4", "At each review, choose the next activity; confirm before accepting", "Table 6, steps 0 and 3–6; Fig. 7", "Sec. 4.3–4.5a"],
     ["5", "After the project, update the coefficients", "Table 11, steps 5–6", "Sec. 5"],
   ], [600, 3700, 2700, 2026]),
 
@@ -186,6 +186,8 @@ const body = [
   H2("4.5 When a shock happens (Table 6, step 5)"),
   P("Re-assess after every material result. In one simulated realization, a discrepancy during the first hot-fire series at 16.0 BU lowered K from 0.83 to 0.77 and M from 0.54 to 0.39, with 2 BU of rework. K was again below K_{test}, so the procedure returned to separate-effects tests until K ≥ 0.817 (20.7 BU) and then completed the integrated tests at 25.9 BU, within budget. The procedure needs no memory: it reads the new state and asks the same two questions."),
   ...IMG("../tutorial/t_run.png", 560, 258, "Figure S4. One realization with a shock, rework and re-plan."),
+  H2("4.5a Accepting the claim (Table 6, step 6)"),
+  P("When the assessed or estimated state enters the target region, the claim is not accepted on that reading alone. A confirmation assessment, made by assessors outside the team, must read at least the target plus a margin chosen at the checkpoint (for example one assessment standard deviation). If it fails, the reading is entered as a new assessment, the coefficients are re-fitted, and work continues; if no other step applies, an integrated test adds evidence before the next review. In the paper's simulations without a margin, about one project in seven was accepted with the true state marginally short of the target; a margin of one standard deviation reduced this to a few percent at roughly a tenth more cost. The worksheet flags when the target region is reached; the confirmation itself is recorded outside it."),
   H2("4.6 Choosing the exposure limit"),
   TBL(["h_{max} (per BU)", "K_{haz}", "Mean cost (BU)", "P90 cost (BU)", "Shocks per run"], [
     ["0.03", "0.859", "23.1", "27.9", "0.28"],

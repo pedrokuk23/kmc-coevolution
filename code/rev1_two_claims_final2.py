@@ -26,8 +26,8 @@ if __name__ == "__main__":
     out = {"grid": best["n"], "dc": best["dc"], "runs": N, "seed0": SEED0, "V_x0": best["V_x0"], "policies": {}}
     rng = np.random.default_rng(5)
     for k, r in R.items():
-        d = (r[:, 0] - ref) / ref.mean() * 100
-        bs = [d[j].mean() for j in (rng.integers(0, N, N) for _ in range(4000))]
+        # paired bootstrap of the ratio of means (both numerator and denominator resampled); Monte Carlo error only
+        bs = [(r[j, 0].mean() / ref[j].mean() - 1) * 100 for j in (rng.integers(0, N, N) for _ in range(4000))]
         out["policies"][k] = dict(mean=float(r[:, 0].mean()), p90=float(np.percentile(r[:, 0], 90)), shocks=float(r[:, 1].mean()),
                                   nr=float(np.mean(r[:, 0] >= 250)), excess_pct=float((r[:, 0].mean() / ref.mean() - 1) * 100),
                                   excess_ci95=[float(np.percentile(bs, 2.5)), float(np.percentile(bs, 97.5))])

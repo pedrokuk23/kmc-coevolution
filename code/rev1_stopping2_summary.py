@@ -40,12 +40,13 @@ for (noise, margin, kind), rr in sorted(groups.items()):
             out_band = ok & (np.abs(em) > 2 * sd); in_band = ok & ~out_band
             rec["criterion_2sd"] = dict(share_outside=float(out_band[ok].mean()), agree_outside=float(ag[out_band].mean()) if out_band.any() else None,
                                         agree_inside=float(ag[in_band].mean()) if in_band.any() else None, sd_median=float(np.median(sd[ok])))
-            # observable alternative: scatter of K_need_hat over the last 6 BU of re-fits (about two assessments)
+            # observable alternative: standard deviation of the K_need estimates recorded at the decision points of the
+            # last 6 BU (time window c_i - 6 <= c <= c_i; about two assessments and their re-fits)
             ags, ems, chs = [], [], []
             for r in rr:
-                kn = [d["Kneed_hat"] for d in r["decisions"]]
-                for i, d in enumerate(r["decisions"]):
-                    w = kn[max(0, i - 6): i + 1]
+                D_ = r["decisions"]
+                for i, d in enumerate(D_):
+                    w = [x["Kneed_hat"] for x in D_[: i + 1] if x["c"] >= d["c"] - 6.0 - 1e-9]
                     if len(w) > 2: ags.append(d["a"] == d["a_true"]); ems.append(d["Kh"] - d["Kneed_hat"]); chs.append(np.std(w))
             ags, ems, chs = map(np.array, (ags, ems, chs)); ob = np.abs(ems) > 2 * chs
             rec["criterion_refit_2s"] = dict(share_outside=float(ob.mean()), agree_outside=float(ags[ob].mean()), agree_inside=float(ags[~ob].mean()),

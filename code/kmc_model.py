@@ -227,8 +227,8 @@ def policy_coupled(K, M, hist, p=P, tgt=TARGET, dc=0.1):
 
 def policy_procedure(K, M, hist, p=P, tgt=TARGET, haz_max=0.05, wait_haz=False):
     """Headroom procedure (Table 6, steps 3-4): maturity gap + knowledge headroom (K >= K_need) + exposure limit.
-    The final return "T" is the fallback of step 6 (state in X_f, confirmation failed). It does not apply the hard
-    exposure limit (wait_haz); no reported result reaches that path with wait_haz=True."""
+    The last branch is the fallback of step 6 (state in X_f, confirmation failed): an integrated test if admissible,
+    otherwise (hard limit) the most productive admissible knowledge-building activity."""
     gK, gM = max(tgt[0] - K, 0), max(tgt[1] - M, 0)
     Kneed = K_need(p, tgt)
     fkS = rates(K, M, "S", p)[0]
@@ -246,6 +246,12 @@ def policy_procedure(K, M, hist, p=P, tgt=TARGET, haz_max=0.05, wait_haz=False):
             fk, fm, h = rates(K, M, a, p)
             return float(fk) - float(h) * p["dK"]
         return max(cand, key=net)
+    # Fallback (Table 6, step 6): state in X_f but not confirmed; an integrated test adds evidence if admissible.
+    # Under the hard limit (wait_haz=True) an inadmissible test is replaced by the most productive admissible
+    # knowledge-building activity (S has no hazard, so one always exists).
+    if wait_haz and hazT > haz_max:
+        cand = [a for a in ["S", "E", "T"] if float(rates(K, M, a, p)[2]) <= haz_max]
+        return max(cand, key=lambda a: float(rates(K, M, a, p)[0]) - float(rates(K, M, a, p)[2]) * p["dK"])
     return "T"
 
 
