@@ -99,7 +99,7 @@ def build(out):
 
     # 3. decision reliability
     H1("S3.3 Reliability of the recommended activity (Section V-F)")
-    P("At every 1 BU of the runs of S3.2, the activity chosen with estimated coefficients and estimated state is compared with the activity that the same rule chooses at the true state with the true coefficients (for the re-planned optimum and the certainty-equivalent policy, the optimal policy of the true model). Decisions are grouped by the estimated margin K̂ − K̂_need, which the decision maker can compute. The observable criterion compares |K̂ − K̂_need| with twice the standard deviation s of the estimates of K_need obtained at the re-fits within the last 6 BU of cost.")
+    P("At every 1 BU of the runs of S3.2, the activity chosen with estimated coefficients and estimated state is compared with the activity that the same rule chooses at the true state with the true coefficients (for the re-planned optimum and the certainty-equivalent policy, the optimal policy of the true model). Decisions are grouped by the estimated margin K̂ − K̂_need, which the decision maker can compute. The observable criterion compares |K̂ − K̂_need| with twice the standard deviation s of the K_need estimates recorded at the decision points within the last 6 BU of cost (an estimate is repeated at successive decision points until the next re-fit, and the repeats are counted).")
     bins = list(C2["0.03|0.0|headroom"]["agreement_by_est_margin"].keys())
     rows = []
     for k in ("0.02|0.0|headroom", "0.03|0.0|headroom", "0.05|0.0|headroom", "0.03|0.0|dp"):
