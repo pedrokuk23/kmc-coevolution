@@ -52,6 +52,22 @@ for (noise, margin, kind), rr in sorted(groups.items()):
                                              s_median=float(np.median(chs)))
             rec["Kneed_abs_error_median"] = float(np.median([abs(d["Kneed_hat"] - d["Kneed"]) for d in D]))
     out["conditions"][f"{noise}|{margin}|{kind}"] = rec
+# Information-matched comparison (second round): headroom with estimated coefficients against the same rule with the
+# coefficients known and the same information (known_hr). For each margin of the estimating procedure, the reference is
+# the cheapest known-coefficient condition whose premature-acceptance rate is equal or lower (same noise level).
+out["matched"] = {}
+for noise in sorted({v["noise"] for v in out["conditions"].values()}):
+    est = [v for v in out["conditions"].values() if v["noise"] == noise and v["kind"] == "headroom"]
+    kn = [v for v in out["conditions"].values() if v["noise"] == noise and v["kind"] == "known_hr"]
+    rows = []
+    for e in sorted(est, key=lambda v: v["margin"]):
+        ok = [k for k in kn if k["premature_rate"] <= e["premature_rate"] + 1e-12]
+        if not ok: continue
+        k = min(ok, key=lambda v: v["C1.0"]["mean"])
+        rows.append(dict(margin=e["margin"], premature_est=e["premature_rate"], cost_est=e["C1.0"]["mean"],
+                         known_margin=k["margin"], premature_known=k["premature_rate"], cost_known=k["C1.0"]["mean"],
+                         excess_pct=100 * (e["C1.0"]["mean"] / k["C1.0"]["mean"] - 1)))
+    out["matched"][str(noise)] = rows
 json.dump(out, open("rev1/stopping2.json", "w"), indent=1)
 for k, v in out["conditions"].items():
     print(k, v["n"], round(v["C1.0"]["mean"], 2), round(v["C1.0"]["excess_vs_oracle"], 1), round(v["premature_rate"], 3), v["not_accepted"],

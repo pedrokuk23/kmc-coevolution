@@ -226,7 +226,9 @@ def policy_coupled(K, M, hist, p=P, tgt=TARGET, dc=0.1):
 
 
 def policy_procedure(K, M, hist, p=P, tgt=TARGET, haz_max=0.05, wait_haz=False):
-    """Headroom procedure (Table 6, steps 3-4): maturity gap + knowledge headroom (K >= K_need) + exposure limit."""
+    """Headroom procedure (Table 6, steps 3-4): maturity gap + knowledge headroom (K >= K_need) + exposure limit.
+    The final return "T" is the fallback of step 6 (state in X_f, confirmation failed). It does not apply the hard
+    exposure limit (wait_haz); no reported result reaches that path with wait_haz=True."""
     gK, gM = max(tgt[0] - K, 0), max(tgt[1] - M, 0)
     Kneed = K_need(p, tgt)
     fkS = rates(K, M, "S", p)[0]

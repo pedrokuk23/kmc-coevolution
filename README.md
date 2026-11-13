@@ -18,7 +18,7 @@ Equation, table, figure and section numbers below refer to the article.
 | `code/s2/` | Source of Supplementary Material S2 (`build_s2.py`) and of its figures (`figs_s2.py`) |
 | `code/s3/` | Source of Supplementary Material S3, studies added in revision (`build_s3.py`) |
 | `code/rev1/` | Results of the revision studies |
-| `figures/` | Figures 1–8 of the article (vector PDF and 300-dpi PNG) |
+| `figures/` | Figures 1–8 of the submitted article (vector PDF and 300-dpi PNG); in the revised article Fig4 is Fig. S3-1 and Fig5–Fig8 are Figs. 4–7 |
 | `supplementary/` | Supplementary Material S1: application guide (`.pdf`, `.docx`) and calibration and decision worksheet (`.xlsx`); Supplementary Material S2: documented programs (`.pdf`, `.docx`); Supplementary Material S3: studies added in revision (`.pdf`, `.docx`) |
 
 ## Revision 1 (v1.1.0)
@@ -26,7 +26,7 @@ Equation, table, figure and section numbers below refer to the article.
 Version 1.1.0 adds the studies made in response to the reviewers (scripts `code/rev1_*.py`, results in `code/rev1/`, Supplementary Material S3 built by `code/s3/build_s3.py`) and two corrections:
 
 - `relgrowth.py`: the profile-likelihood interval of Eq. (21) now profiles from several starting values of ν and locates each endpoint by root search. The 90% interval for the second NIST dataset is 0.664–0.988 (0.67–0.96 in v1.0.0, where the inner optimizer missed the profile minimum for M_∞ near 1).
-- `fig8.py`: the test branch of the flowchart now includes the maturity-deficit condition of Table 6 (M < M_req), as in `kmc_model.policy_procedure`, which generated all results; the flowchart also shows the acceptance step (Table 6, step 6) and the data-aware knowledge step.
+- `fig8.py`: the test branch of the flowchart now includes the maturity-deficit condition of Table 6 (M < M_req), as in `kmc_model.policy_procedure`, which generated all results; the flowchart also shows the acceptance step (Table 6, step 6).
 
 In the revised article the box plot of policy costs (`Fig4`, produced by `fig4.py`) moved to S3 (Fig. S3-1), so the files `Fig5`–`Fig8` here are Figs. 4–7 of the revised article. Section V-G now uses `rev1/two_claims_final2.json` (best policy found, 51⁴ grid, terminal test on the successor state) instead of `two_claims.json` (26⁴).
 
@@ -34,16 +34,16 @@ In the revised article the box plot of policy costs (`Fig4`, produced by `fig4.p
 |---|---|---|
 | `rev1_valdata.py` | Validation-data state D separated from maturity; 3-D dynamic program (R1.1) | `rev1/valdata_*.json` |
 | `rev1_valdata_rule.py` | Data-aware knowledge step of the headroom procedure (R1.1) | `rev1/valdata_rule.json` |
-| `rev1_stopping.py` | Observable acceptance review with confirmation cost; decision agreement with the true state (R1.2, R2.3) | `rev1/stopping.json`, `rev1/decision_agreement.json` |
+| `rev1_stopping.py` | Observable acceptance review with confirmation cost; decision agreement with the true state (R1.2, R2.3) | `rev1/stopping.json` |
 | `rev1_constrained.py` | Optimum recomputed under the same hard exposure limit (R1.3) | `rev1/constrained.json` |
 | `rev1_two_claims_conv.py`, `rev1_two_claims_final.py` | Grid convergence and confidence interval of the two-claim gap (R1.4) | `rev1/two_claims_*.json` |
 | `rev1_assessors.py` | Assessor disagreement and bias (R2.2) | `rev1/assessors.json` |
-| `rev1_valdata_rule2.py`, `rev1_valdata_rule2_cases.py`, `rev1_valdata_env.py` | Data-aware step with data from E or T; six cases and envelope subsample (R1.1, R2.4) | `rev1/valdata_rule2.json`, `rev1/valdata_env.json` |
-| `rev1_stopping2.py`, `rev1_stopping2_summary.py` | Acceptance review in 200 projects: operating characteristics (margin, confirmation cost, noise) and observable reliability criterion (R1.2, R2.3) | `rev1/ck/`, `rev1/stopping2.json` |
-| `rev1_budget.py` | Fixed budget as a finite horizon: probability of reaching the target (R1.3, R2.5) | `rev1/budget.json` |
+| `rev1_valdata_rule2.py`, `rev1_valdata_rule2_cases.py`, `rev1_valdata_env.py` | Look-ahead knowledge step with data from E or T (a finding, not part of Table 6); six cases and 12 envelope sets (R1.1, R2.4) | `rev1/valdata_rule2.json`, `rev1/valdata_env.json` |
+| `rev1_stopping2.py`, `rev1_stopping2_summary.py` | Acceptance review in 200 projects: operating characteristics (margin, confirmation cost, noise), information-matched known-coefficient benchmark (`known_hr`, `known_dp`), and observable reliability criterion (R1.2, R2.3) | `rev1/ck/`, `rev1/stopping2.json` |
+| `rev1_budget.py` | Fixed budget as a finite horizon: probability of reaching the target, raised test gates (R1.3, R2.5) | `rev1/budget2.json` |
 | `rev1_two_claims_conv2.py`, `rev1_two_claims_final2.py` | Two claims: terminal test on the successor state, grids 26^4-51^4, independent streams, gap against the best policy (R1.4) | `rev1/two_claims_convergence2.json`, `rev1/two_claims_final2.json` |
 | `rev1_eT.py` | Sweep of the knowledge credit of integrated tests (R2.4) | `rev1/eT_sweep.json` |
-| `rev1_launch_oos.py` | Out-of-sample check of the launch-data hazard, 2003-2025 (R2.1); protocol `rev1/launch_oos_protocol.md`, records `rev1/launch_oos_records.csv` | `rev1/launch_oos.json` |
+| `rev1_launch_oos.py` | Exploratory out-of-sample check of the launch-data loss rates, 2003-2025 (S3.9; not used in the article); protocol `rev1/launch_oos_protocol.md`, records `rev1/launch_oos_records.csv` | `rev1/launch_oos.json` |
 
 The first-round scripts `rev1_stopping.py`, `rev1_two_claims_conv.py`, `rev1_two_claims_final.py` and `rev1_valdata_rule.py` are kept for traceability; the article uses the second-round results listed above.
 
@@ -74,7 +74,7 @@ From `code/`:
 ./run_all.sh
 ```
 
-runs every script in order (about 2 h on 2 cores; `extensions.py` and `calib_adaptive.py` resume from checkpoints if interrupted). Each script can also be run alone; the result files are included, so the figure scripts run without the experiments.
+runs every script in order (about 2 h on 2 cores for the submitted version and about 10 h more for the revision scripts; `extensions.py` and `calib_adaptive.py` resume from checkpoints if interrupted). Each script can also be run alone; the result files are included, so the figure scripts run without the experiments.
 
 | Script | Reproduces | Output |
 |---|---|---|

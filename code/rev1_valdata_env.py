@@ -1,10 +1,11 @@
 """Revision 1, R1.1 (second round): the validation-data state D over the literature-anchored envelope.
+All runs start from the base initial state X0 (and D0 = 0.10), not from the initial maturity sampled by envelope.draw.
 
 For the first NSETS reachable parameter sets of envelope.py (Sec. V-D), the three-dimensional model of
 rev1_valdata.py is solved on a 41^3 grid (targets on grid nodes) with integrated tests supplying data at their maturity
 rate (rho_T = r_T) and separate-effects tests supplying it slowly (rho_E = 0.05) or fast (rho_E = 0.40). Policies:
 opt3 (optimum of the extended model), opt2 (optimum of the base model, ignores D), head_D (Table 6 with the true
-rates), head_DD2 (Table 6 with the data-aware knowledge step of Sec. V-H, data from E or T). 300 paired runs per policy and set.
+rates), head_DD2 (headroom with the look-ahead knowledge step, a finding of Sec. V-H, not part of Table 6; data from E or T; rates known). 300 paired runs per policy and set.
 Also, high data supply from integrated tests (rho_T = 0.50) and strong knowledge credit of integrated tests
 (e_T = 0.25) in the base set (R2.4)."""
 import json, sys, numpy as np

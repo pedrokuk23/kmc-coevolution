@@ -22,7 +22,11 @@ from kmc_model import P, TARGET, X0, rates, in_target, make_dp_policy, policy_pr
 OPT_TRUE = make_dp_policy(ca.G0, ca.POL0, ca.Q0)
 DT, CMAX = ca.DT, ca.CMAX
 TRUE_RULE = {"headroom": lambda K, M: policy_procedure(K, M, {}, p=P), "dp": lambda K, M: OPT_TRUE(K, M, {}),
-             "dp_known": lambda K, M: OPT_TRUE(K, M, {})}
+             "dp_known": lambda K, M: OPT_TRUE(K, M, {}),
+             "known_hr": lambda K, M: policy_procedure(K, M, {}, p=P), "known_dp": lambda K, M: OPT_TRUE(K, M, {})}
+# Information-matched benchmarks (second round): known_hr / known_dp know the coefficients and receive the same
+# information as the estimating policies (exact initial state, observed shocks, model replay between assessments),
+# so their state estimate is exact; they differ from the estimating policies only by not estimating the coefficients.
 
 def fit(acts, idx, obs, start, rs, noise):
     def res(th):
@@ -45,9 +49,10 @@ def kneed_sd(theta, cov):
 def run_project(rep, kind, margin, noise):
     rng = np.random.default_rng(5000 + rep); nrng = np.random.default_rng(6000 + rep); rs = np.random.default_rng(7000 + rep)
     crng = np.random.default_rng(8000 + rep)
-    known = kind == "dp_known"
-    theta = np.array([P[k] for k in ca.FIT]) if known else ca.PRIOR.copy(); cov = np.diag(ca.PSD ** 2)
-    policy, pf = (OPT_TRUE, dict(P)) if known else ca.make_policy(theta, kind)
+    known = kind == "dp_known"; matched = kind in ("known_hr", "known_dp")
+    theta = np.array([P[k] for k in ca.FIT]) if (known or matched) else ca.PRIOR.copy(); cov = np.diag(ca.PSD ** 2)
+    if matched: policy, pf = ((lambda K, M, h: policy_procedure(K, M, h, p=P)) if kind == "known_hr" else OPT_TRUE), dict(P)
+    else: policy, pf = (OPT_TRUE, dict(P)) if known else ca.make_policy(theta, kind)
     K, M = X0; obs0 = np.clip(np.array(X0) + nrng.normal(0, noise, 2), 0, 1)
     Kh, Mh = (obs0 if known else X0)
     c = 0.0; shocks = 0; acts = []; idx = [0]; obs = [obs0]
@@ -61,6 +66,7 @@ def run_project(rep, kind, margin, noise):
                 accepted = True; break
             idx.append(len(acts)); obs.append(o)
             if known: Kh, Mh = o
+            elif matched: Kh, Mh = ca.replay(theta, acts)[-1]
             else:
                 theta, cov = fit(acts, idx, np.array(obs), theta, rs, noise); policy, pf = ca.make_policy(theta, kind)
                 Kh, Mh = ca.replay(theta, acts)[-1]
@@ -69,7 +75,7 @@ def run_project(rep, kind, margin, noise):
         if c >= next_dec - 1e-9:
             kn_hat = float(min(K_need(pf), 1.5))
             dec.append(dict(c=round(c, 1), K=float(K), Kh=float(Kh), a=a, a_true=TRUE_RULE[kind](K, M),
-                            Kneed_hat=kn_hat, Kneed=float(K_need(P)), sd=(0.0 if known else kneed_sd(theta, cov))))
+                            Kneed_hat=kn_hat, Kneed=float(K_need(P)), sd=(0.0 if (known or matched) else kneed_sd(theta, cov))))
             next_dec += 1.0
         fk, fm, h = rates(K, M, a, P)
         if rng.random() < min(h * 0.1, 1):
@@ -82,6 +88,7 @@ def run_project(rep, kind, margin, noise):
         if c >= next_assess - 1e-9:
             idx.append(len(acts)); obs.append(np.clip(np.array([K, M]) + nrng.normal(0, noise, 2), 0, 1))
             if known: Kh, Mh = obs[-1]
+            elif matched: Kh, Mh = ca.replay(theta, acts)[-1]
             else:
                 theta, cov = fit(acts, idx, np.array(obs), theta, rs, noise); policy, pf = ca.make_policy(theta, kind)
                 Kh, Mh = ca.replay(theta, acts)[-1]

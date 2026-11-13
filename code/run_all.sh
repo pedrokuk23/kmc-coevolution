@@ -18,7 +18,7 @@ python3 calib_adaptive.py 40 est        # calib_adaptive_est.json (state known o
 for i in 1 2 3 4 5 6 7 8; do python3 fig$i.py > /dev/null; done   # ../figures/Fig1-Fig8: Figs. 1-3, S3-1, 4-7 of the revised article
 # Revision 1 (v1.1.0): studies added in response to the reviewers (results in rev1/, details in S3)
 python3 rev1_valdata.py 1000 0                      # rev1/valdata_0.json (D tied to M: reduces to the base model)
-python3 rev1_valdata.py 1000 1,2,3,4,5,6            # rev1/valdata_1_2_3_4_5_6.json (Sec. V-H, Table S3-1)
+python3 rev1_valdata.py 1000 1,2,3,4,5,6            # rev1/valdata_1_2_3_4_5_6.json (Sec. V-H, Table S3-1 with rev1_valdata_rule2_cases.py)
 python3 rev1_valdata_rule.py 1000                   # rev1/valdata_rule.json (first round, superseded by rev1_valdata_rule2_cases.py)
 python3 rev1_stopping.py 40 0,0.03                  # rev1/stopping.json (first round, superseded by rev1_stopping2.py)
 python3 rev1_assessors.py                           # rev1/assessors.json (Sec. V-F, Table S3-5)
@@ -28,14 +28,15 @@ GRIDS=41:0.5,46:0.5,36:0.25 OUT=rev1/two_claims_convergence_part2.json python3 r
 python3 rev1_two_claims_final.py                    # rev1/two_claims_final.json (first round, superseded by rev1_two_claims_final2.py)
 python3 rev1_valdata_rule2_cases.py 1000                # rev1/valdata_rule2.json (six cases, data from E or T)
 python3 rev1_valdata_env.py 12                       # rev1/valdata_env.json (first 12 reachable envelope sets)
-python3 rev1_stopping2.py 200 0.03 0,0.015,0.03,0.045 headroom,dp_known
-python3 rev1_stopping2.py 200 0.02 0,0.02 headroom,dp_known
-python3 rev1_stopping2.py 200 0.05 0,0.05 headroom,dp_known
+python3 rev1_stopping2.py 200 0.03 0,0.015,0.03,0.045 headroom,dp_known,known_hr,known_dp
+python3 rev1_stopping2.py 200 0.02 0,0.02 headroom,dp_known,known_hr,known_dp
+python3 rev1_stopping2.py 200 0.05 0,0.05 headroom,dp_known,known_hr,known_dp
 python3 rev1_stopping2.py 100 0.03 0,0.03 dp
 python3 rev1_stopping2_summary.py                   # rev1/stopping2.json (Sec. V-F)
-python3 rev1_budget.py                              # rev1/budget.json (Sec. V-C)
+python3 rev1_budget.py                              # rev1/budget2.json (Sec. V-C, Table S3-6; 241^2 grid)
 python3 rev1_two_claims_conv2.py                    # rev1/two_claims_convergence2.json (Sec. V-G)
+GRIDS=36:0.25 python3 rev1_two_claims_conv2.py      # adds the dc check of Table S3-7 to the same file
 python3 rev1_two_claims_final2.py                   # rev1/two_claims_final2.json (Sec. V-G)
 python3 rev1_eT.py                                  # rev1/eT_sweep.json (Sec. V-H)
-python3 rev1_launch_oos.py                          # rev1/launch_oos.json (Sec. VI-B)
+python3 rev1_launch_oos.py                          # rev1/launch_oos.json (S3.9, exploratory; not used in the article)
 (cd s3 && python3 build_s3.py)                      # Supplementary Material S3 (.docx)

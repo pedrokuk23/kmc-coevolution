@@ -1,4 +1,6 @@
-"""Revision 1: the six cases of rev1_valdata.py re-run with the data-aware step of rev1_valdata_rule2 (data from E or T); 61^3 grid, 1000 paired runs.
+"""Revision 1: the six cases of rev1_valdata.py re-run with the look-ahead step of rev1_valdata_rule2 (greedy, E-first and T-first
+plans compared by projection with the true rates; a finding of Sec. V-H, not part of Table 6); 61^3 grid, 1000 paired runs.
+The remainder of this docstring is inherited from rev1_valdata_rule.py (E-first only).
 
 When separate-effects tests supply validation data faster than demonstration does, the optimum of the
 three-dimensional model builds the data first (E), then simulates up to the new ceiling (S), then tests (T). The

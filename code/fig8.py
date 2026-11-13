@@ -41,7 +41,7 @@ box(50, 66, 64, 9, "Screen (4): cost, schedule, $h_i$, exposure;\nretain admissi
 dia(50, 51, 36, 16, "$M < M_\\mathrm{req}$ and\n$K \\geq K_\\mathrm{need}$?")
 dia(16, 51, 28, 12, "Hazard\nwithin limit?")
 box(16, 37, 26, 9, "Integrated\ntest T (step 3)", fc="#F7E1D3", ec="#C8572A")
-box(84, 51, 26, 20, "Most productive\nadmissible\nS, E, or T, net\nof shock; data-\naware (step 4)", fc="#DCE8F3", ec="#1D5B8F")
+box(84, 51, 28, 20, "Most productive\nadmissible S, E,\nor T, net of shock\n(step 4; T if no\nother step, 6)", fc="#DCE8F3", ec="#1D5B8F")
 box(50, 24, 80, 8, "Execute; record result, cost, and any shock")
 box(50, 9, 80, 9, "Track fitted coefficients across projects and\nprocess changes (Table 11, step 6)", fc="#ECECEC")
 
@@ -52,7 +52,7 @@ arr([(65, 79), (72, 79)]); lab(66, 81.5, "yes")
 arr([(50, 73), (50, 70.5)]); lab(51.5, 72, "no")
 arr([(50, 61.5), (50, 59)])
 arr([(32, 51), (30, 51)]); lab(29.5, 55.0, "yes")
-arr([(68, 51), (71, 51)]); lab(68.2, 55.0, "no")
+arr([(68, 51), (70, 51)]); lab(68.2, 55.0, "no")
 arr([(16, 45), (16, 41.5)]); lab(17.5, 43.2, "yes")
 arr([(16, 57), (16, 73.5)]); lab(17.5, 59.5, "no")
 arr([(16, 84.5), (16, 89)])                     # 3b -> re-fit
