@@ -3,7 +3,15 @@ import json, glob, numpy as np
 import calib_adaptive as ca
 from kmc_model import make_dp_policy
 OPT = make_dp_policy(ca.G0, ca.POL0, ca.Q0)
-R = [json.load(open(f)) for f in glob.glob("rev1/ck/_s2_*.json")]
+import gzip, os
+RUNS = "rev1/stopping2_runs.jsonl.gz"   # all per-project records in one file (the per-run checkpoints rev1/ck/ are not archived)
+FILES = sorted(glob.glob("rev1/ck/_s2_*.json"))
+if FILES:
+    R = [json.load(open(f)) for f in FILES]
+    with gzip.open(RUNS, "wt") as g:
+        for r in R: g.write(json.dumps(r, sort_keys=True) + "\n")
+else:
+    R = [json.loads(l) for l in gzip.open(RUNS, "rt")]
 reps = sorted({r["rep"] for r in R})
 ORACLE = {i: float(ca.simulate(OPT, rng=np.random.default_rng(5000 + i))[0]) for i in reps}
 rng = np.random.default_rng(11)
