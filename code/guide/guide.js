@@ -220,6 +220,7 @@ const body = [
 ];
 
 const doc = new Document({
+  creator: "Pedro K. de Albuquerque", lastModifiedBy: "Pedro K. de Albuquerque", title: "KMC Supplementary Material S1: Application Guide",
   styles: {
     default: { document: { run: { font: FONT, size: 21 } } },
     paragraphStyles: [
