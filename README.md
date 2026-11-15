@@ -4,7 +4,7 @@ Code, results, figures and Supplementary Materials S1–S3 for the article
 
 > P. K. de Albuquerque, D. R. Pleffken, C. S. Cerqueira, and L. Galembeck, "Knowledge–Maturity Coevolution: A Coupled Evidence Model for Selecting Simulation and Test Activities in Constrained Engineering Development," submitted to *IEEE Access*, 2026.
 
-Archived version: https://doi.org/10.5281/zenodo.23199997
+Archived versions (this DOI always resolves to the latest): https://doi.org/10.5281/zenodo.23199996
 
 Equation, table, figure and section numbers below refer to the article.
 
