@@ -23,7 +23,7 @@ Equation, table, figure and section numbers below refer to the article.
 
 ## Revision 1 (v1.1.0)
 
-Version 1.1.1 keeps the code and results of 1.1.0; it packs the 6600 per-project records of `rev1_stopping2.py` into one file (`code/rev1/stopping2_runs.jsonl.gz`) and corrects the wording of Supplementary Materials S1 and S3.
+Version 1.1.2 updates the flowchart (figures/Fig8, Fig. 7 of the revised article) and its copy in Supplementary Material S1, the cross-references of S1, and the policy labels of Fig. S3-1; code and results are unchanged. Version 1.1.1 keeps the code and results of 1.1.0; it packs the 6600 per-project records of `rev1_stopping2.py` into one file (`code/rev1/stopping2_runs.jsonl.gz`) and corrects the wording of Supplementary Materials S1 and S3.
 
 
 Version 1.1.0 adds the studies made in response to the reviewers (scripts `code/rev1_*.py`, results in `code/rev1/`, Supplementary Material S3 built by `code/s3/build_s3.py`) and two corrections:

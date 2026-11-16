@@ -23,12 +23,12 @@ function runs(text, base = {}) {
   if (last < text.length) out.push(new TextRun({ text: text.slice(last), font: FONT, ...base }));
   return out;
 }
-const P = (t, o = {}) => new Paragraph({ children: runs(t, o.run || {}), spacing: { after: 120, line: 276 }, alignment: o.align, ...o.p });
+const P = (t, o = {}) => new Paragraph({ children: runs(t, o.run || {}), spacing: { after: 120, line: 276 }, alignment: o.align || AlignmentType.JUSTIFIED, ...o.p });
 const H1 = (t) => new Paragraph({ heading: HeadingLevel.HEADING_1, children: runs(t), spacing: { before: 280, after: 140 } });
 const H2 = (t) => new Paragraph({ heading: HeadingLevel.HEADING_2, children: runs(t), spacing: { before: 220, after: 100 } });
 const EQ = (t) => new Paragraph({ children: runs(t, { font: "Cambria Math", size: 23 }), alignment: AlignmentType.CENTER, spacing: { before: 80, after: 120 } });
-const B = (t) => new Paragraph({ numbering: { reference: "bul", level: 0 }, children: runs(t), spacing: { after: 60, line: 276 } });
-const N = (t, ref = "num") => new Paragraph({ numbering: { reference: ref, level: 0 }, children: runs(t), spacing: { after: 60, line: 276 } });
+const B = (t) => new Paragraph({ numbering: { reference: "bul", level: 0 }, children: runs(t), alignment: AlignmentType.JUSTIFIED, spacing: { after: 60, line: 276 } });
+const N = (t, ref = "num") => new Paragraph({ numbering: { reference: ref, level: 0 }, children: runs(t), alignment: AlignmentType.JUSTIFIED, spacing: { after: 60, line: 276 } });
 const BOX = (title, lines) => new Table({
   width: { size: 9026, type: WidthType.DXA }, columnWidths: [9026],
   rows: [new TableRow({ children: [new TableCell({
@@ -70,8 +70,8 @@ const body = [
   ]),
   SP(),
   TBL(["Step", "What you do", "Where in the paper", "This guide"], [
-    ["0", "Define the claim, the target region, budget and exposure limit", "Sec. III-C, Table 6 step 1", "Sec. 4.1"],
-    ["1", "Score K and M at every review; keep the log", "Sec. III-H, IV-A; Tables 4, 11-1", "Sec. 1–2"],
+    ["0", "Define the claim, the target region, budget and exposure limit", "Sec. III-C; Fig. 7", "Sec. 4.1"],
+    ["1", "Score K and M at every review; keep the log", "Sec. III-H, IV-A; Table 4; Table 6, step 1; Table 11, step 1", "Sec. 1–2"],
     ["2", "Calibrate the coefficients from records + public priors", "Table 11, steps 2–4", "Sec. 3"],
     ["3", "Compute the test threshold K_{test} = max(K_{need}, K_{haz})", "Eq. (17b), Table 6 steps 3/3b", "Sec. 4.2"],
     ["4", "At each review, choose the next activity; confirm before accepting", "Table 6, steps 0 and 3–6; Fig. 7", "Sec. 4.3–4.5a"],
@@ -150,7 +150,7 @@ const body = [
   ], [2300, 2200, 2200, 2326]),
 
   H1("4. Applying the procedure to a new project"),
-  H2("4.1 Define the problem (Table 6, step 1)"),
+  H2("4.1 Define the problem (Sec. III-C; Fig. 7)"),
   P("Project N (fictional): qualify a new upper-stage engine. Claim C1: combustion is stable across the operating envelope. First review: (K, M) = (0.20, 0.10). Target region: K ≥ K_{req} = 0.75 and M ≥ M_{req} = 0.80. Budget: 30 BU. Exposure limit set by Org X: λ_{T}(1 − K)^{2} ≤ h_{max} = 0.05 per BU, about a 10% chance of losing a 2-BU integrated test."),
   H2("4.2 The test threshold"),
   P("An integrated test is worth running only when knowledge supports the target maturity (headroom) and the test hazard is within the exposure limit:"),
@@ -216,7 +216,7 @@ const body = [
 
   H1("7. Optional checks with the code"),
   P("The procedure above needs only the spreadsheet. The Python package archived with the paper adds three checks: the optimal policy and the exact derivative D_{a} (solve_dp), a Monte Carlo of the plan (simulate), and a sweep of the exposure limit. Replace the dictionary P in kmc_model.py with the organization's parameter card, set TARGET and X0, and call policy_procedure(K, M, hist, p, tgt, haz_max, wait_haz=True) at each review (wait_haz=False reproduces the paper, where step 3b re-approves the limit). The scripts that reproduce this guide (tutorial/calib.py, apply.py, update.py, figs.py) are included."),
-  ...IMG("../../figures/Fig8.png", 330, 462, "Figure S5. The procedure inside the calibration loop (paper, Fig. 7)."),
+  ...IMG("../../figures/Fig8.png", 330, 436, "Figure S5. The procedure inside the calibration loop (paper, Fig. 7)."),
 ];
 
 const doc = new Document({
